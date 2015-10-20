@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    meta( name="viewport" content="width=device-width, initial-scale=1.0,height = device-height , user-scalable=no ")
+    meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+    title #{title}-deerSYS
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    style(type="text/css") body{padding-top: 60px;padding-bottom: 40px;}
+    link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-table.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-select.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-datepicker.css')
+  body
+    div.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          a.btn.btn-navbar(data-toggle="collapse" data-target=".nav-collapse")
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href="/") deerSYS
+          div.nav-collapse
+            ul.nav
+              li
+                a(href='/') Home
+              - if (!user)
+                li
+                  a(href='/login') Login
+                li
+                  a(href='/reg') Register
+              - else
+                li
+                  a(href='/managerMoney') MM
+                li
+                  a(href='/logout') Logout
+    div#container.container 
+      block content
+      hr
+      footer
+        p 2015   
+          a(href="https://github.com/youngdeer" target="_blank") youngDeer's github
+  block scripts
+  script(src="/javascripts/jquery-1.10.1.min.js")
+  script(src="/javascripts/bootstrap.js")
+  script(src="/javascripts/layout.js")
+  script(src="/javascripts/bootstrap-table.js")
+  script(src="/javascripts/bootstrap-select.js")
+  script(src="/javascripts/bootstrap-datepicker.js")

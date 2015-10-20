@@ -1,0 +1,30 @@
+extends layout
+block content
+   include alert.jade
+   form.form-horizontal(method="post")
+      fieldset
+         legend money account
+         .control-grouo
+            label.control-label(for="number") number
+            .controls
+               input.input-xlarge#number(type="number" name="number")
+         .control-grouo
+            label.control-label(for="time") time
+            .controls
+               input.input-xlarge#time( type="text" name="time" readonly="true")
+         .control-group
+            label.control-label(for="type") type
+            .controls
+               select.selectpicker#type(name="type" data-width="100%")
+                  option shop
+                  option food
+                  option other
+         .form-actions
+            button.btn.btn-primary(type="submit") account
+
+   include ./tableAccount.jade
+block scripts
+   script(src="/javascripts/jquery-1.10.1.min.js")
+   script(src="/javascripts/managerMoney.js")
+
+

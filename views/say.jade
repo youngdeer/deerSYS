@@ -1,0 +1,8 @@
+form.form-horizontal(method="post" action='/post')
+  fieldset
+    .control-grouo
+      label.control-label(for="post") post text:
+      .controls
+        input.input-xlarge#post(type="text" name="post")
+    .form-actions
+      button.btn.btn-primary(type="submit") post

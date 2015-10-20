@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  include alert.jade
+  form.form-horizontal(method="post")
+    fieldset
+      legend regist
+      .control-group
+        label.control-label(for="username") username
+        .controls
+          input#username.input-xlarge(type="text" name="username")
+          p.help-block your account number,to regist and display
+       .control-group
+         label.control-label(for="password") password
+         .controls
+           input#password.input-xlarge(type="password" name="password")
+        .control-group
+          label.control-label(for="password-repeat") repeat password
+          .controls
+            input#password-repeat.input-xlarge(type="password" name="password-repeat")
+         .form-actions
+           button.btn.btn-primary(type="submit") regist

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  include alert.jade
+  form.form-horizontal(method="post")
+    fieldset
+      legend user login
+      .control-grouo
+        label.control-label(for="username") username
+        .controls
+          input.input-xlarge#username(type="text" name="username")
+       .control-group
+         label.control-label(for="password") password
+         .controls
+           input.input-xlarge#password(type="password" name="password")
+        .form-actions
+          button.btn.btn-primary(type="submit") login

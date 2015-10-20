@@ -1,0 +1,18 @@
+table.table-striped(data-toggle="table" data-pagination="true")
+   thead
+      tr
+         th(data-field="name" data-width="20%" data-align="center") name
+         th(data-field="number" data-width="20%" data-align="center") cost
+         th(data-field="type" data-width="20%" data-align="center") type
+         th(data-field="time" data-width="20%" data-align="center") time
+         th(data-field="operate" data-width="20%" data-align="center") operate
+   tbody
+      -for (var i = 0; i < accounts.length; i++)
+         tr
+            td=accounts[i].name
+            td=accounts[i].number
+            td=accounts[i].type
+            td=accounts[i].time
+            td
+               a(href="javascript:void(0)" onclick='deleteById("'+accounts[i].id+'")') delete
+

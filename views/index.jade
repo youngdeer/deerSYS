@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  include alert.jade
+  - if (!user)
+    .hero-unit
+      h3 welcome deerSYS
+      p deerSYS is a node system
+      p
+        a.btn.btn-primary.btn-large(href="/login") login
+        a.btn.btn-large(href="/reg") regist
+  - else
+    include ./say.jade
+  include ./posts.jade
+  .row
+    .span4
+      h2 Deer Young
+      p doubi!!!
+      
