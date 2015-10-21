@@ -75,13 +75,14 @@ router.post('/deleteAccount', function(req,res){
 router.get('/managerMoney', checkLogin);
 router.get('/managerMoney', function(req,res,next){
 	var user = req.session.user;
-	Account.get(user.name,function(err,accounts){
+	Account.get(user.name,function(err,accounts,totalCost){
 		if(err){
 			accounts = [];
 		}
 		res.render('managerMoney',{
 			title: 'money manager',
 			accounts: accounts,
+			totalCost:totalCost.toString(),
 		});
 	});
 });
@@ -113,13 +114,14 @@ router.post('/managerMoney', function(req,res){
 			res.redirect('/managerMoney');
 		});
 	}else{
-		Account.search(currentUser.name,req.body.number,req.body.type,req.body.time,function(err,accounts){
+		Account.search(currentUser.name,req.body.number,req.body.type,req.body.time,function(err,accounts,totalCost){
 			if(err){
 				accounts = [];
 			}
 			res.render('managerMoney',{
 				title: 'money manager',
 				accounts: accounts,
+				totalCost:totalCost.toString(),
 			});
 		});
 	}

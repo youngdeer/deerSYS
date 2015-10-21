@@ -66,11 +66,13 @@ Account.get = function get(username,callback){
                     return callback(err);
                 }
                 var accounts = [];
+                var totalCost = 0;
                 docs.forEach(function(doc,index){
+                    totalCost += parseFloat(doc.number);
                     var account = new Account(doc.user,doc.number,doc.type,doc.time,doc._id);
                     accounts.push(account);
                 });
-                callback(null,accounts);
+                callback(null,accounts,totalCost);
             });
         });
     });
@@ -103,11 +105,13 @@ Account.search = function search(username,number,type,time,callback){
                     return callback(err);
                 }
                 var accounts = [];
+                var totalCost = 0;
                 docs.forEach(function(doc,index){
+                    totalCost += parseFloat(doc.number);
                     var account = new Account(doc.user,doc.number,doc.type,doc.time,doc._id);
                     accounts.push(account);
                 });
-                callback(null,accounts);
+                callback(null,accounts,totalCost);
             });
         });
     });
