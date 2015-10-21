@@ -25,3 +25,6 @@ function beforeSearch(){
     $("#isSearch").val('yes');
 }
 
+function refresh(){
+    window.location = '/managerMoney';
+}

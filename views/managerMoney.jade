@@ -1,6 +1,7 @@
 extends layout
 block content
    include alert.jade
+   button.btn.btn-info(style="position: fixed;right:0px;" onclick="refresh()") refresh
    form.form-horizontal(method="post")
       fieldset
          legend money account
@@ -21,7 +22,7 @@ block content
                   option other
          .form-actions
             button.btn.btn-primary(type="submit") account
-            button.btn(type="submit" onclick="beforeSearch()") search
+            button.btn.btn-warning(type="submit" onclick="beforeSearch()") search
             input#isSearch(type="hidden" name="isSearch")
 
    include ./tableAccount.jade
