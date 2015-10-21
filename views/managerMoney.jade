@@ -21,6 +21,8 @@ block content
                   option other
          .form-actions
             button.btn.btn-primary(type="submit") account
+            button.btn(type="submit" onclick="beforeSearch()") search
+            input#isSearch(type="hidden" name="isSearch")
 
    include ./tableAccount.jade
 block scripts

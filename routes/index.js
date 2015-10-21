@@ -88,25 +88,41 @@ router.get('/managerMoney', function(req,res,next){
 
 router.post('/managerMoney', checkLogin);
 router.post('/managerMoney', function(req,res,next){
-	var number = req.body.number;
-	var type = req.body.type;
-	if(number == '' || type == ''){
-		req.flash('error','number or type can not empty!');
-		return res.redirect('/managerMoney');
+	var isSearch = req.body.isSearch;
+	if(isSearch != 'yes'){
+		var number = req.body.number;
+		var type = req.body.type;
+		if(number == '' || type == ''){
+			req.flash('error','number or type can not empty!');
+			return res.redirect('/managerMoney');
+		}
 	}
 	next();
 });
 router.post('/managerMoney', function(req,res){
+	var isSearch = req.body.isSearch;
 	var currentUser = req.session.user;
-	var account = new Account(currentUser.name,req.body.number,req.body.type,req.body.time);
-	account.save(function(err){
-		if(err){
-			req.flash('error', err);
-			return res.redirect('/managerMoney');
-		}
-		req.flash('success','account success!');
-		res.redirect('/managerMoney');
-	});
+	if(isSearch != 'yes'){
+		var account = new Account(currentUser.name,req.body.number,req.body.type,req.body.time);
+		account.save(function(err){
+			if(err){
+				req.flash('error', err);
+				return res.redirect('/managerMoney');
+			}
+			req.flash('success','account success!');
+			res.redirect('/managerMoney');
+		});
+	}else{
+		Account.search(currentUser.name,req.body.number,req.body.type,req.body.time,function(err,accounts){
+			if(err){
+				accounts = [];
+			}
+			res.render('managerMoney',{
+				title: 'money manager',
+				accounts: accounts,
+			});
+		});
+	}
 });
 
 

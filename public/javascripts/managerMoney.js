@@ -21,3 +21,7 @@ function deleteById(id){
     }
 }
 
+function beforeSearch(){
+    $("#isSearch").val('yes');
+}
+

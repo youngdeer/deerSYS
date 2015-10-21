@@ -76,6 +76,43 @@ Account.get = function get(username,callback){
     });
 }
 
+Account.search = function search(username,number,type,time,callback){
+    mongodb.open(function(err,db){
+        if(err){
+            return callback(err);
+        }
+        db.collection('accounts',function(err,collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            var query = {}
+            query.user = username;
+            if(number != ''){
+                query.number = number;
+            }
+            if(type != ''){
+                query.type = type;
+            }
+            if(time != ''){
+                query.time = time;
+            }
+            collection.find(query).sort({time:-1}).toArray(function(err,docs){
+                mongodb.close();
+                if(err){
+                    return callback(err);
+                }
+                var accounts = [];
+                docs.forEach(function(doc,index){
+                    var account = new Account(doc.user,doc.number,doc.type,doc.time,doc._id);
+                    accounts.push(account);
+                });
+                callback(null,accounts);
+            });
+        });
+    });
+}
+
 
 Account.delete = function del(id,callback){
     mongodb.open(function(err,db){
