@@ -4,6 +4,9 @@ var crypto = require('crypto');
 var User = require('../model/user.js');
 var Post = require("../model/post.js");
 var Account = require('../model/account.js');
+var Promise = require("bluebird");
+Promise.promisifyAll(Account);
+Promise.promisifyAll(Account.prototype);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -105,14 +108,23 @@ router.post('/managerMoney', function(req,res){
 	var currentUser = req.session.user;
 	if(isSearch != 'yes'){
 		var account = new Account(currentUser.name,req.body.number,req.body.type,req.body.time);
-		account.save(function(err){
+		account.saveAsync()
+			.then(function(){
+				req.flash('success','account success!');
+				res.redirect('/managerMoney');
+			})
+			.catch(function(err){
+				req.flash('error', err);
+				return res.redirect('/managerMoney');
+			});
+		/*account.save(function(err){
 			if(err){
 				req.flash('error', err);
 				return res.redirect('/managerMoney');
 			}
 			req.flash('success','account success!');
 			res.redirect('/managerMoney');
-		});
+		});*/
 	}else{
 		Account.search(currentUser.name,req.body.number,req.body.type,req.body.time,function(err,accounts,totalCost){
 			if(err){

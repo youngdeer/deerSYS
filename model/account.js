@@ -3,6 +3,8 @@
  */
 var mongodb = require('./db');
 var moment = require('moment');
+var Promise = require("bluebird");
+Promise.promisifyAll(mongodb);
 
 function Account(username,number,type,time,id){
     if(id){
@@ -28,7 +30,24 @@ Account.prototype.save = function save(callback){
         time: this.time,
     }
 
-    mongodb.open(function(err,db){
+    mongodb.openAsync()
+        .then(function(db){
+            db.collection('accounts',function(err,collection){
+                if(err){
+                    mongodb.close();
+                    return callback(err);
+                }
+                collection.ensureIndex('user');
+                collection.insert(account,{safe:true},function(err,account){
+                    mongodb.close();
+                    return callback(err,account);
+                });
+            });
+        })
+        .catch(function(err){
+            return callback(err);
+        });
+    /*mongodb.open(function(err,db){
         if(err){
             return callback(err);
         }
@@ -43,7 +62,7 @@ Account.prototype.save = function save(callback){
                     return callback(err,account);
             });
         });
-    });
+    });*/
 }
 
 Account.get = function get(username,callback){
