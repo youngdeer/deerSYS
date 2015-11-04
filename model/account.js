@@ -38,9 +38,9 @@ Account.prototype.save = function save(callback){
                     collection.ensureIndex('user');
                     Promise.promisifyAll(collection);
                     collection.insertAsync(account,{safe:true})
-                        .then(function(account){
+                        .then(function(){
                             mongodb.close();
-                            return callback(null,account);
+                            return callback();
                         })
                         .catch(function(err){
                             mongodb.close();
