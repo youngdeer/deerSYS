@@ -32,7 +32,30 @@ Account.prototype.save = function save(callback){
 
     mongodb.openAsync()
         .then(function(db){
-            db.collection('accounts',function(err,collection){
+            Promise.promisifyAll(db);
+            db.collectionAsync('accounts')
+                .then(function(collection){
+                    collection.ensureIndex('user');
+                    Promise.promisifyAll(collection);
+                    collection.insertAsync(account,{safe:true})
+                        .then(function(account){
+                            mongodb.close();
+                            return callback(null,account);
+                        })
+                        .catch(function(err){
+                            mongodb.close();
+                            return callback(err,null);
+                        });
+                    /*collection.insert(account,{safe:true},function(err,account){
+                        mongodb.close();
+                        return callback(err,account);
+                    });*/
+                })
+                .catch(function(err){
+                    mongodb.close();
+                    return callback(err);
+                });
+            /*db.collection('accounts',function(err,collection){
                 if(err){
                     mongodb.close();
                     return callback(err);
@@ -42,7 +65,7 @@ Account.prototype.save = function save(callback){
                     mongodb.close();
                     return callback(err,account);
                 });
-            });
+            });*/
         })
         .catch(function(err){
             return callback(err);
