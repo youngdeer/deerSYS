@@ -30,62 +30,32 @@ Account.prototype.save = function save(callback){
         time: this.time,
     }
 
+    var getCollection = function(db){
+        Promise.promisifyAll(db);
+        return db.collectionAsync('accounts');
+    }
+
+    var collectionInsert = function(collection){
+        collection.ensureIndex('user');
+        Promise.promisifyAll(collection);
+        return collection.insertAsync(account,{safe:true});
+    }
+
+    var saveSuccess = function(){
+        mongodb.close();
+        return callback();
+    }
+
+    var saveFail = function(err){
+        mongodb.close();
+        return callback(err);
+    }
+
     mongodb.openAsync()
-        .then(function(db){
-            Promise.promisifyAll(db);
-            db.collectionAsync('accounts')
-                .then(function(collection){
-                    collection.ensureIndex('user');
-                    Promise.promisifyAll(collection);
-                    collection.insertAsync(account,{safe:true})
-                        .then(function(){
-                            mongodb.close();
-                            return callback();
-                        })
-                        .catch(function(err){
-                            mongodb.close();
-                            return callback(err,null);
-                        });
-                    /*collection.insert(account,{safe:true},function(err,account){
-                        mongodb.close();
-                        return callback(err,account);
-                    });*/
-                })
-                .catch(function(err){
-                    mongodb.close();
-                    return callback(err);
-                });
-            /*db.collection('accounts',function(err,collection){
-                if(err){
-                    mongodb.close();
-                    return callback(err);
-                }
-                collection.ensureIndex('user');
-                collection.insert(account,{safe:true},function(err,account){
-                    mongodb.close();
-                    return callback(err,account);
-                });
-            });*/
-        })
-        .catch(function(err){
-            return callback(err);
-        });
-    /*mongodb.open(function(err,db){
-        if(err){
-            return callback(err);
-        }
-        db.collection('accounts',function(err,collection){
-            if(err){
-                mongodb.close();
-                return callback(err);
-            }
-            collection.ensureIndex('user');
-            collection.insert(account,{safe:true},function(err,account){
-                    mongodb.close();
-                    return callback(err,account);
-            });
-        });
-    });*/
+        .then(getCollection)
+        .then(collectionInsert)
+        .then(saveSuccess)
+        .catch(saveFail);
 }
 
 Account.get = function get(username,callback){
