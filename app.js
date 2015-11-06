@@ -76,6 +76,7 @@ app.post('/doLogin', routes);
 app.use('/logout', routes);
 app.use('/users', users);
 app.use('/managerMoney', routes);
+app.use('/mobileReg', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

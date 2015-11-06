@@ -1,0 +1,24 @@
+extends layout
+block content
+    include alert.jade
+    form.form-horizontal(method="post")
+        fieldset
+            legend mobile regist
+            .control-group
+                label.control-label(for="mobileNum") mobileNum
+                .controls
+                    input#mobileNum.input-xlarge(type="text" name="mobileNum")
+                    a.btn.btn-info(onclick="getIdentifyingCode()") get identifyingCode
+            .form-actions
+                button.btn.btn-primary(type="submit") regist
+    form#identifyingCode(method="post" action="https://api.qingmayun.com/20150822/SMS/templateSMS")
+       input#accountSid(type="hidden" name="accountSid" value="7144845b85074746885531f61b1409bc")
+       input#appId(type="hidden" name="appId" value="b1c92f84a0b64509acdd1215199d9134")
+       input#templateId(type="hidden" name="templateId" value="3840229")
+       input#to(type="hidden" name="to")
+       input#param(type="hidden" name="param")
+       input#timestamp(type="hidden" name="timestamp")
+       input#sig(type="hidden" name="sig")
+block scripts
+   script(src="/javascripts/jquery.md5.js")
+   script(src="/javascripts/mobileReg.js")

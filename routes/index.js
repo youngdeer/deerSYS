@@ -139,6 +139,12 @@ router.post('/managerMoney', function(req,res){
 	}
 });
 
+router.get('/mobileReg', checkNotLogin);
+router.get('/mobileReg', function(req,res,next){
+	res.render('mobileReg', {
+		title: 'user mobile regist'
+	});
+});
 
 router.get('/reg', checkNotLogin);
 router.get('/reg', function(req,res,next){
