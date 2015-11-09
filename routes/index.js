@@ -5,6 +5,9 @@ var User = require('../model/user.js');
 var Post = require("../model/post.js");
 var Account = require('../model/account.js');
 var Promise = require("bluebird");
+var request = require('request');
+var moment = require('moment');
+var querystring = require("querystring");
 Promise.promisifyAll(Account);
 Promise.promisifyAll(Account.prototype);
 
@@ -145,6 +148,53 @@ router.get('/mobileReg', function(req,res,next){
 		title: 'user mobile regist'
 	});
 });
+
+router.post('/getIdentifyingCode', checkNotLogin);
+router.post('/getIdentifyingCode', function(req, res){
+	var md5 = crypto.createHash('md5');
+	var timestamp = moment().format('YYYYMMDDHHmmss');
+	var str = '7144845b85074746885531f61b1409bc95a9694fe9cb40dd8fc69916ee845d95'+timestamp;
+	var sign = md5.update(str).digest('hex');
+	var to = req.body.mobileNum;
+	if(to.trim() == '' || matchMobileNum(to) == false){
+		req.flash('error','mobileNum is empty or format incorrect.');
+		return res.redirect('/mobileReg');
+	}
+	request.post({url:'https://api.qingmayun.com/20150822/SMS/templateSMS', form: {
+		accountSid: '7144845b85074746885531f61b1409bc',
+		appId: 'b1c92f84a0b64509acdd1215199d9134',
+		templateId: '3840229',
+		to: to,
+		param: randomNum(6),
+		timestamp: timestamp,
+		sig: sign,
+	}}, function optionalCallback(err, httpResponse, body) {
+		if (err) {
+			return console.error('getIdentifyingCode failed:', err);
+		}
+		console.log('getIdentifyingCode successful!  Server responded with:', body);
+		if(JSON.parse(body).respCode == '00000'){
+			req.flash('success','IdentifyingCode has sent to your phone.');
+			return res.redirect('/mobileReg');
+		}else{
+			req.flash('error','get identifyingCode has problem.');
+			return res.redirect('/mobileReg');
+		}
+	});
+});
+
+function randomNum(n){
+	var t='';
+	for(var i=0;i<n;i++){
+		t+=Math.floor(Math.random()*10);
+	}
+	return t;
+}
+
+function matchMobileNum(tel){
+	var telReg = !!tel.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
+	return telReg;
+}
 
 router.get('/reg', checkNotLogin);
 router.get('/reg', function(req,res,next){
