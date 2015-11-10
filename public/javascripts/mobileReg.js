@@ -45,3 +45,29 @@ function getSig(){
     var str = "7144845b85074746885531f61b1409bc95a9694fe9cb40dd8fc69916ee845d95"+$("#timestamp").val();
     return $.md5(str);
 }
+
+window.onload = function(){
+    if($('#to').val().trim() != '' && $('#to').val() != 'undefined') {
+        $("#mobileNum").val($('#to').val());
+    }
+    if($('#param').val().trim() != '' && $('#param').val() != 'undefined') {
+        var wait=60;
+        time();
+        function time() {
+            if (wait == 0) {
+                $("#btn").removeAttr("disabled");
+                $("#btn").html("Resend ");
+                wait = 60;
+            } else {
+                $("#btn").attr("disabled", true);
+                $("#btn").html("Resend " + wait + " seconds!");
+                wait--;
+                setTimeout(function() {
+                        time()
+                    },
+                    1000)
+            }
+        }
+    }
+    setTimeout("$('#param').val(randomNum(10))", 60000 );
+}

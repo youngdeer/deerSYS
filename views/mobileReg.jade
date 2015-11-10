@@ -1,6 +1,8 @@
 extends layout
 block content
     include alert.jade
+    input#param(type='hidden' value='#{param}')
+    input#to(type='hidden' value='#{to}')
     form.form-horizontal(method="post" action="/getIdentifyingCode")
         fieldset
             legend mobile regist
@@ -10,7 +12,7 @@ block content
                     input#mobileNum.input-xlarge(type="text" name="mobileNum")
                     //a.btn.btn-info(onclick="getIdentifyingCode()") get identifyingCode
             .form-actions
-                button.btn.btn-primary(type="submit") get identifyingCode
+                button#btn.btn.btn-primary(type="submit" onclick='setParam()') get identifyingCode
     //form#identifyingCode(method="post" action="https://api.qingmayun.com/20150822/SMS/templateSMS")
        input#accountSid(type="hidden" name="accountSid" value="7144845b85074746885531f61b1409bc")
        input#appId(type="hidden" name="appId" value="b1c92f84a0b64509acdd1215199d9134")

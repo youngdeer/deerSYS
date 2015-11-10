@@ -154,6 +154,7 @@ router.post('/getIdentifyingCode', function(req, res){
 	var timestamp = moment().format('YYYYMMDDHHmmss');
 	var str = '7144845b85074746885531f61b1409bc95a9694fe9cb40dd8fc69916ee845d95'+timestamp;
 	var sign = md5.update(str).digest('hex');
+	var param = randomNum(6);
 	var to = req.body.mobileNum;
 	if(to.trim() == '' || matchMobileNum(to) == false){
 		req.flash('error','mobileNum is empty or format incorrect.');
@@ -164,7 +165,7 @@ router.post('/getIdentifyingCode', function(req, res){
 		appId: 'b1c92f84a0b64509acdd1215199d9134',
 		templateId: '3840229',
 		to: to,
-		param: randomNum(6),
+		param: param,
 		timestamp: timestamp,
 		sig: sign,
 	}}, function optionalCallback(err, httpResponse, body) {
@@ -174,7 +175,11 @@ router.post('/getIdentifyingCode', function(req, res){
 		console.log('getIdentifyingCode successful!  Server responded with:', body);
 		if(JSON.parse(body).respCode == '00000'){
 			req.flash('success','IdentifyingCode has sent to your phone.');
-			return res.redirect('/mobileReg');
+			res.render('mobileReg',{
+				title: 'user mobile regist',
+				param: param.toString(),
+				to:to.toString(),
+			});
 		}else{
 			req.flash('error','get identifyingCode has problem.');
 			return res.redirect('/mobileReg');
