@@ -13,9 +13,13 @@ function deleteById(id){
             url: '/deleteAccount',
             dataType: 'json',
             type:'post',
-            success:function(){
-                alert('delete success!');
-                window.location = '/managerMoney';
+            success:function(data){
+                if(data.error){
+                    alert(data.error);
+                }else{
+                    alert('delete success!');
+                    window.location = '/managerMoney';
+                }
             }
         });
     }

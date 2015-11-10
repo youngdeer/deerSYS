@@ -69,5 +69,32 @@ window.onload = function(){
             }
         }
     }
-    setTimeout("$('#param').val(randomNum(10))", 60000 );
+    setTimeout("$('#param').val(randomNum(10))", 1800000 );
+}
+
+
+function identifying(){
+    var to = $("#to").val();
+    var param = $("#param").val();
+    var identifyingCode = $("#identifyingCode").val();
+    if(identifyingCode.trim() == param.trim()){
+        $.ajax({
+            data: {username:to,
+                   password:to,
+                   type:'mobile'},
+            url: '/reg',
+            dataType: 'json',
+            type:'post',
+            success:function(data){
+                if(data.error){
+                    alert(data.error);
+                }else{
+                    alert('register success!');
+                    window.location = '/';
+                }
+            }
+        });
+    }else{
+        alert('identifyingCode is wrong.');
+    }
 }

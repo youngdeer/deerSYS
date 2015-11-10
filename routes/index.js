@@ -68,12 +68,9 @@ router.post('/deleteAccount', function(req,res){
 	var id = req.body.accountId;
 	Account.delete(id,function(err){
 		if(err){
-			//req.flash('error', err);
-			//return res.redirect('/managerMoney');
+			return res.json({error:err});
 		}
 		res.json({success:1});
-		//req.flash('success','delete success!');
-		//res.redirect('/managerMoney');
 	});
 });
 
@@ -209,41 +206,68 @@ router.get('/reg', function(req,res,next){
 
 router.post('/reg', checkNotLogin);
 router.post('/reg', function(req, res){
-	if(req.body['username'] == '' || req.body['password'] == ''){
-		req.flash('error','username or password can not be empty.');
-		return res.redirect('/reg');
-	}
-	if(req.body['password-repeat'] != req.body['password']){
-		req.flash('error','repeatPwd is not match Pwd');
-		return res.redirect('/reg');
-	}
 	var md5 = crypto.createHash('md5');
-	var password = md5.update(req.body.password).digest('base64');
+	var type = req.body.type;
+	if(type == 'mobile'){
+		var passwordMobile = md5.update(req.body.password).digest('base64');
 
-	var newUser = new User({
-		name: req.body.username,
-		password: password,
-	});
+		var newMobileUser = new User({
+			name: req.body.username,
+			password: passwordMobile,
+		});
 
-	User.get(newUser.name, function(err, user){
-		if(user){
-			err = 'Username already exists.';
-		}
-		if(err){
-			req.flash('error', err);
+		User.get(newMobileUser.name, function(err, user){
+			if(user){
+				err = 'Username already exists.';
+			}
+			if(err){
+				return res.json({error:err});
+			}
+
+			newMobileUser.save(function(err){
+				if(err){
+					return res.json({error:err});
+				}
+				req.session.user = newMobileUser;
+				res.json({success:1});
+			});
+		});
+	}else{
+		if(req.body['username'] == '' || req.body['password'] == ''){
+			req.flash('error','username or password can not be empty.');
 			return res.redirect('/reg');
 		}
+		if(req.body['password-repeat'] != req.body['password']){
+			req.flash('error','repeatPwd is not match Pwd');
+			return res.redirect('/reg');
+		}
+		var password = md5.update(req.body.password).digest('base64');
 
-		newUser.save(function(err){
+		var newUser = new User({
+			name: req.body.username,
+			password: password,
+		});
+
+		User.get(newUser.name, function(err, user){
+			if(user){
+				err = 'Username already exists.';
+			}
 			if(err){
 				req.flash('error', err);
 				return res.redirect('/reg');
 			}
-			req.session.user = newUser;
-			req.flash('success','regist success!');
-			res.redirect('/');
+
+			newUser.save(function(err){
+				if(err){
+					req.flash('error', err);
+					return res.redirect('/reg');
+				}
+				req.session.user = newUser;
+				req.flash('success','regist success!');
+				res.redirect('/');
+			});
 		});
-	});
+	}
 });
 
 router.get('/login', checkNotLogin);
