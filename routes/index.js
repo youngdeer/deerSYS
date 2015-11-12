@@ -4,6 +4,7 @@ var crypto = require('crypto');
 var User = require('../model/user.js');
 var Post = require("../model/post.js");
 var Account = require('../model/account.js');
+var Weixin = require('../model/weixin.js');
 var Promise = require("bluebird");
 var request = require('request');
 var moment = require('moment');
@@ -136,6 +137,14 @@ router.post('/managerMoney', function(req,res){
 			});
 		});
 	}
+});
+
+router.get('/WXtest', function(req,res){
+	Weixin.getAccessToken(function(){
+		res.render('WXtest', {
+			title: 'weixin api test'
+		});
+	});
 });
 
 router.get('/mobileReg', checkNotLogin);

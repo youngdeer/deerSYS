@@ -77,6 +77,7 @@ app.use('/logout', routes);
 app.use('/users', users);
 app.use('/managerMoney', routes);
 app.use('/mobileReg', routes);
+app.use('/WXtest', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
