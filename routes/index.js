@@ -140,7 +140,7 @@ router.post('/managerMoney', function(req,res){
 });
 
 router.get('/WXtest', function(req,res){
-	Weixin.getAccessToken(function(){
+	Weixin.get(req,res,function(){
 		res.render('WXtest', {
 			title: 'weixin api test'
 		});
