@@ -6,6 +6,7 @@ var requestJson = require('request-json');
 var WXBizMsgCrypt = require('wechat-enterprise').WXBizMsgCrypt;
 var parseString = require('xml2js').parseString;
 var TextAutoReply = require('../model/TextAutoReply.js');
+var Util = require('../model/util.js');
 
 var Token = 'pjvGsTj2sNXio9QVTb2N3fB';
 var EncodingAESKey = 't9aW3yr01xAadCel5OaNSOBsCckeBrTwjT3Eft314xr';
@@ -110,14 +111,15 @@ function sendTextMsg(syntonyData,res){
     var sendMsg = '<xml>'+
     '<ToUserName><![CDATA['+syntonyData.xml.FromUserName+']]></ToUserName>'+
     '<FromUserName><![CDATA[wxf86bb1cbf7a5b02f]]></FromUserName>'+
-    '<CreateTime>1348831860</CreateTime>'+
+    '<CreateTime>'+Date.now()+'</CreateTime>'+
     '<MsgType><![CDATA[text]]></MsgType>'+
     '<Content><![CDATA['+text+']]></Content>'+
     '</xml>';
     console.log(sendMsg);
     var msg_encrypt = wxBizMsgCrypt.encrypt(sendMsg);
-    var timestamp = '1460090960';
-    var nonce = '1944083391';
+    var timestamp = Date.now();
+    var nonce = Util.randomNum(10);
+    //console.log(timestamp+'|||'+nonce);
     var msg_signature = wxBizMsgCrypt.getSignature(timestamp,nonce,msg_encrypt);
     //console.log(msg_encrypt);
     var xml = '<xml>'+

@@ -8,6 +8,7 @@ var Weixin = require('../model/weixin.js');
 var Promise = require("bluebird");
 var request = require('request');
 var moment = require('moment');
+var Util = require('../model/util.js');
 Promise.promisifyAll(Account);
 Promise.promisifyAll(Account.prototype);
 
@@ -165,7 +166,7 @@ router.post('/getIdentifyingCode', function(req, res){
 	var timestamp = moment().format('YYYYMMDDHHmmss');
 	var str = '7144845b85074746885531f61b1409bc95a9694fe9cb40dd8fc69916ee845d95'+timestamp;
 	var sign = md5.update(str).digest('hex');
-	var param = randomNum(6);
+	var param = Util.randomNum(6);
 	var to = req.body.mobileNum;
 	if(to.trim() == '' || matchMobileNum(to) == false){
 		req.flash('error','mobileNum is empty or format incorrect.');
@@ -198,13 +199,6 @@ router.post('/getIdentifyingCode', function(req, res){
 	});
 });
 
-function randomNum(n){
-	var t='';
-	for(var i=0;i<n;i++){
-		t+=Math.floor(Math.random()*10);
-	}
-	return t;
-}
 
 function matchMobileNum(tel){
 	var telReg = !!tel.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
