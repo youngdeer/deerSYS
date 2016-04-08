@@ -140,12 +140,16 @@ router.post('/managerMoney', function(req,res){
 });
 
 router.get('/WXtest', function(req,res){
-	/*Weixin.get(req,res,function(){
-		res.render('WXtest', {
-			title: 'weixin api test'
-		});
-	});*/
-	Weixin.getMedia();
+	Weixin.get(req,res,function(){
+		console.log('weixin get');
+	});
+	/*Weixin.getMedia();*/
+});
+
+router.post('/WXtest', function(req,res){
+	Weixin.post(req,res,function(){
+		console.log('weixin post');
+	});
 });
 
 router.get('/mobileReg', checkNotLogin);

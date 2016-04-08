@@ -4,6 +4,13 @@
 var request = require('request');
 var requestJson = require('request-json');
 var WXBizMsgCrypt = require('wechat-enterprise').WXBizMsgCrypt;
+var parseString = require('xml2js').parseString;
+var TextAutoReply = require('../model/TextAutoReply.js');
+
+var Token = 'pjvGsTj2sNXio9QVTb2N3fB';
+var EncodingAESKey = 't9aW3yr01xAadCel5OaNSOBsCckeBrTwjT3Eft314xr';
+var id = 'wxf86bb1cbf7a5b02f';
+var wxBizMsgCrypt = new WXBizMsgCrypt(Token,EncodingAESKey,id);
 
 function Weixin(){
 
@@ -22,10 +29,6 @@ Weixin.getAccessToken = function getAccessToken(){
 }
 
 Weixin.get = function get(req,res,callback){
-    var Token = 'pjvGsTj2sNXio9QVTb2N3fB';
-    var EncodingAESKey = 't9aW3yr01xAadCel5OaNSOBsCckeBrTwjT3Eft314xr';
-    var id = 'wxf86bb1cbf7a5b02f';
-    var wxBizMsgCrypt = new WXBizMsgCrypt(Token,EncodingAESKey,id);
     console.log(req.query);
     var echostr = req.query.echostr;
     var result = wxBizMsgCrypt.decrypt(echostr);
@@ -34,6 +37,97 @@ Weixin.get = function get(req,res,callback){
     res.write(result.message);
     res.end();
     callback();
+}
+
+Weixin.post = function post(req,res,callback){
+    //console.log(req.query);
+    processMsg(req,res);
+    callback();
+}
+
+/*
+*消息回复
+ */
+function processMsg(req,res){
+    var postData = '';
+    req.on('data',function(chunk){
+        postData += chunk;
+    });
+
+    req.on('end',function(){
+        //console.log('Accept Data: '+postData);
+        var syntonyData = parseSyntonyData(postData);
+        //console.log(syntonyData);
+        var msgType = syntonyData.xml.MsgType;
+        switch (msgType){
+            case 'text' :
+                //处理文本消息
+                sendTextMsg(syntonyData,res)
+                break;
+            default :
+        }
+    });
+}
+
+/*
+*处理微信回调数据
+ */
+function parseSyntonyData(postData){
+    var syntonyData = {};
+    parseString(postData,{explicitArray: false},function(err,result){
+        if(err){
+            console.error(err);
+            return;
+        }
+        //console.dir(result);
+        var realMsg = wxBizMsgCrypt.decrypt(result.xml.Encrypt);
+        //console.log(realMsg);
+        parseString(realMsg.message,{explicitArray: false},function(err,result){
+            if(err){
+                console.error(err);
+                return;
+            }
+            //console.dir(result);
+            syntonyData = result;
+        });
+    });
+
+    return syntonyData;
+}
+
+/*
+*发送文本消息
+ <xml>
+ <ToUserName><![CDATA[toUser]]></ToUserName>
+ <FromUserName><![CDATA[fromUser]]></FromUserName>
+ <CreateTime>1348831860</CreateTime>
+ <MsgType><![CDATA[text]]></MsgType>
+ <Content><![CDATA[this is a test]]></Content>
+ </xml>
+ */
+function sendTextMsg(syntonyData,res){
+    var text = TextAutoReply.catchText(syntonyData.xml.Content);
+    var sendMsg = '<xml>'+
+    '<ToUserName><![CDATA['+syntonyData.xml.FromUserName+']]></ToUserName>'+
+    '<FromUserName><![CDATA[wxf86bb1cbf7a5b02f]]></FromUserName>'+
+    '<CreateTime>1348831860</CreateTime>'+
+    '<MsgType><![CDATA[text]]></MsgType>'+
+    '<Content><![CDATA['+text+']]></Content>'+
+    '</xml>';
+    console.log(sendMsg);
+    var msg_encrypt = wxBizMsgCrypt.encrypt(sendMsg);
+    var timestamp = '1460090960';
+    var nonce = '1944083391';
+    var msg_signature = wxBizMsgCrypt.getSignature(timestamp,nonce,msg_encrypt);
+    //console.log(msg_encrypt);
+    var xml = '<xml>'+
+    '<Encrypt><![CDATA['+msg_encrypt+']]></Encrypt>'+
+    '<MsgSignature><![CDATA['+msg_signature+']]></MsgSignature>'+
+    '<TimeStamp>'+timestamp+'</TimeStamp>'+
+    '<Nonce><![CDATA['+nonce+']]></Nonce>'+
+    '</xml>';
+    //console.log(xml);
+    res.send(xml);
 }
 
 Weixin.getMedia = function getMedia(){
