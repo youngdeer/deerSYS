@@ -84,7 +84,7 @@ router.get('/managerMoney', function(req,res,next){
 			accounts = [];
 		}
 		res.render('managerMoney',{
-			title: 'money manager',
+			title: '记账本',
 			accounts: accounts,
 			totalCost:totalCost.toString(),
 		});

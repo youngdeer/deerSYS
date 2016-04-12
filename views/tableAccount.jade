@@ -1,10 +1,10 @@
 table.table-striped(data-toggle="table" data-pagination="true")
    thead
       tr
-         th(data-field="number" data-width="20%" data-align="center") cost
-         th(data-field="type" data-width="20%" data-align="center") type
-         th(data-field="time" data-width="40%" data-align="center") time
-         th(data-field="operate" data-width="20%" data-align="center") operate
+         th(data-field="number" data-width="20%" data-align="center") 花费（元）
+         th(data-field="type" data-width="20%" data-align="center") 用途
+         th(data-field="time" data-width="40%" data-align="center") 时间
+         th(data-field="operate" data-width="20%" data-align="center") 操作
    tbody
       -for (var i = 0; i < accounts.length; i++)
          tr
@@ -12,7 +12,7 @@ table.table-striped(data-toggle="table" data-pagination="true")
             td=accounts[i].type
             td=accounts[i].time
             td
-               a(href="javascript:void(0)" onclick='deleteById("'+accounts[i].id+'")') delete
+               a(href="javascript:void(0)" onclick='deleteById("'+accounts[i].id+'")') 删除
 h4
    span(style="color:#FF44AA; ") totalCost:  #{totalCost}
 

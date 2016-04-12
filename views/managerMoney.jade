@@ -1,28 +1,29 @@
 extends layout
 block content
    include alert.jade
-   button.btn.btn-info(style="position: fixed;right:0px;" onclick="refresh()") refresh
+   button.btn.btn-info(style="position: fixed;right:0px;" onclick="refresh()") 刷新
    form.form-horizontal(method="post")
       fieldset
-         legend money account
+         legend 记账本
          .control-grouo
-            label.control-label(for="number") number
+            label.control-label(for="number") 金额
             .controls
                input.input-xlarge#number(type="number" name="number")
          .control-grouo
-            label.control-label(for="time") time
+            label.control-label(for="time") 时间
             .controls
                input.input-xlarge#time( type="text" name="time" readonly="true")
          .control-group
-            label.control-label(for="type") type
+            label.control-label(for="type") 用途
             .controls
                select.selectpicker#type(title='Choose one of the following...' name="type" data-width="100%")
                   option shop
                   option food
                   option other
+               button.btn.btn-info(type="button" onclick="editType()") 编辑用途
          .form-actions
-            button.btn.btn-primary(type="submit") account
-            button.btn.btn-warning(type="submit" onclick="beforeSearch()") search
+            button.btn.btn-primary(type="submit") 记一笔
+            button.btn.btn-warning(type="submit" onclick="beforeSearch()") 搜索
             input#isSearch(type="hidden" name="isSearch")
 
    include ./tableAccount.jade

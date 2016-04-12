@@ -6,7 +6,7 @@ $(document).ready(function(){
 });
 
 function deleteById(id){
-    var flag = confirm('confirm delete this record?');
+    var flag = confirm('是否确认删除?');
     if(flag){
         $.ajax({
             data: {accountId:id},
@@ -17,7 +17,7 @@ function deleteById(id){
                 if(data.error){
                     alert(data.error);
                 }else{
-                    alert('delete success!');
+                    alert('删除成功!');
                     window.location = '/managerMoney';
                 }
             }
@@ -31,4 +31,8 @@ function beforeSearch(){
 
 function refresh(){
     window.location = '/managerMoney';
+}
+
+function editType(){
+    alert("编辑类型");
 }
