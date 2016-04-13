@@ -71,6 +71,14 @@ function renderTypeLIst(data){
 }
 
 /**
+ * 拼装用途下拉框
+ * luy
+ */
+function renderSelectType(type){
+    $("#type").append("<option>"+type+"</option>");
+}
+
+/**
  * 增加用途
  * luy
  */
@@ -94,10 +102,12 @@ function addType(){
                         if(data.error){
                             alert(data.error);
                         }else{
+                            renderSelectType(type);
                             $("#typeList").html("");
                             $.each(data,function(index,item){
                                 renderTypeLIst(item);
                             });
+                            $('select.selectpicker').selectpicker('refresh');
                         }
                     }
                 });

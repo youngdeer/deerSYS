@@ -113,11 +113,21 @@ router.get('/managerMoney', function(req,res,next){
 		if(err){
 			accounts = [];
 		}
-		res.render('managerMoney',{
-			title: '记账本',
-			accounts: accounts,
-			totalCost:totalCost.toString(),
+
+		UseType.get(user.name,function(err,typeList){
+			if(err){
+				typeList = [];
+			}
+
+			res.render('managerMoney',{
+				title: '记账本',
+				accounts: accounts,
+				typeList: typeList,
+				totalCost:totalCost.toString(),
+			});
+
 		});
+
 	});
 });
 
@@ -161,10 +171,18 @@ router.post('/managerMoney', function(req,res){
 			if(err){
 				accounts = [];
 			}
-			res.render('managerMoney',{
-				title: 'money manager',
-				accounts: accounts,
-				totalCost:totalCost.toString(),
+			UseType.get(currentUser.name,function(err,typeList){
+				if(err){
+					typeList = [];
+				}
+
+				res.render('managerMoney',{
+					title: '记账本',
+					accounts: accounts,
+					typeList: typeList,
+					totalCost:totalCost.toString(),
+				});
+
 			});
 		});
 	}

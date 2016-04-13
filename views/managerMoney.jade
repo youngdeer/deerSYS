@@ -20,6 +20,8 @@ block content
                   option shop
                   option food
                   option other
+                  -for (var i = 0; i < typeList.length; i++)
+                     option=typeList[i].useType
                button.btn.btn-info(type="button" onclick="editType()") 编辑用途
          .form-actions
             button.btn.btn-primary(type="submit") 记一笔
