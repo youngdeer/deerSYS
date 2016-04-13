@@ -94,6 +94,16 @@ router.post('/addType', function(req,res){
 		});
 });
 
+router.post('/deleteUseType', checkLogin);
+router.post('/deleteUseType', function(req,res){
+	var id = req.body.id;
+	UseType.delete(id,function(err){
+		if(err){
+			return res.json({error:err});
+		}
+		res.json({success:1});
+	});
+});
 
 router.get('/getUseType', checkLogin);
 router.get('/getUseType', function(req,res){

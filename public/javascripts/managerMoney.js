@@ -71,11 +71,55 @@ function renderTypeLIst(data){
 }
 
 /**
+ * 删除用途
+ * luy
+ */
+function deleteType(id){
+    var flag = confirm('是否确认删除?');
+    if(flag){
+        $.ajax({
+            data: {id:id},
+            url: '/deleteUseType',
+            dataType: 'json',
+            type:'post',
+            success:function(data){
+                if(data.error){
+                    alert(data.error);
+                }else{
+                    $.ajax({
+                        data: {},
+                        url: '/getUseType',
+                        dataType: 'json',
+                        type:'get',
+                        success:function(data){
+                            if(data.error){
+                                alert(data.error);
+                            }else{
+                                $("#typeList").html("");
+                                $("#type").html("");
+                                $("#type").append("<option>shop</option>");
+                                $("#type").append("<option>food</option>");
+                                $("#type").append("<option>other</option>");
+                                $.each(data,function(index,item){
+                                    renderTypeLIst(item);
+                                    renderSelectType(item);
+                                });
+                                $('select.selectpicker').selectpicker('refresh');
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+}
+
+/**
  * 拼装用途下拉框
  * luy
  */
-function renderSelectType(type){
-    $("#type").append("<option>"+type+"</option>");
+function renderSelectType(data){
+    $("#type").append("<option>"+data.useType+"</option>");
 }
 
 /**
@@ -102,10 +146,14 @@ function addType(){
                         if(data.error){
                             alert(data.error);
                         }else{
-                            renderSelectType(type);
                             $("#typeList").html("");
+                            $("#type").html("");
+                            $("#type").append("<option>shop</option>");
+                            $("#type").append("<option>food</option>");
+                            $("#type").append("<option>other</option>");
                             $.each(data,function(index,item){
                                 renderTypeLIst(item);
+                                renderSelectType(item);
                             });
                             $('select.selectpicker').selectpicker('refresh');
                         }

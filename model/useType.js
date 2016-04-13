@@ -84,3 +84,28 @@ UseType.get = function get(username,callback){
 
     });
 }
+
+
+UseType.delete = function del(id,callback){
+    mongodb.open(function(err,db){
+        if(err){
+            return callback(err);
+        }
+
+        db.collection("useType",function(err,collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            var query = {};
+            var ObjectID = require('mongodb').ObjectID;
+            if(id){
+                query._id = ObjectID(id);
+            }
+            collection.remove(query,{safe:true},function(err){
+                mongodb.close();
+                return callback(err);
+            });
+        });
+    });
+}
