@@ -27,6 +27,26 @@ block content
             input#isSearch(type="hidden" name="isSearch")
 
    include ./tableAccount.jade
+   #editTypeModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+      .modal-dialog
+         .modal-content
+            .modal-header
+               button.close(data-dismiss="modal" aria-hidden="true" type="button") &times;
+               h4.modal-title#modalTitle 用途编辑
+            .modal-body
+               span 用途：
+               input#editType
+               &nbsp
+               button.btn.btn-info(type="button" onclick="addType()") 增加用途
+               hr
+               table.table-striped(data-toggle="table" data-pagination="true")
+                  thead
+                     tr
+                        th(data-field="type" data-width="50%" data-align="center") 用途
+                        th(data-field="operate" data-width="50%" data-align="center") 操作
+                  tbody#typeList
+            .modal-footer
+               button.btn.btn-default(data-dismiss="modal" type="button") 关闭
 block scripts
    script(src="/javascripts/managerMoney.js")
 

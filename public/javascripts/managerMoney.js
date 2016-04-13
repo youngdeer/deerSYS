@@ -33,6 +33,76 @@ function refresh(){
     window.location = '/managerMoney';
 }
 
+/**
+ * 编辑用途
+ * luy
+ */
 function editType(){
-    alert("编辑类型");
+    $.ajax({
+        data: {},
+        url: '/getUseType',
+        dataType: 'json',
+        type:'get',
+        success:function(data){
+            if(data.error){
+                alert(data.error);
+            }else{
+                $("#typeList").html("");
+                $.each(data,function(index,item){
+                    renderTypeLIst(item);
+                });
+                $("#editTypeModal").modal();
+            }
+        }
+    });
+}
+
+/**
+ * 拼装用途列表
+ * luy
+ */
+function renderTypeLIst(data){
+    var trStr = "";
+    trStr += "<tr>";
+    trStr += "<td>"+data.useType+"</td>";
+    trStr += "<td><a href='javascript:void(0)' onclick='deleteType(\""+data.id+"\")'>删除</a></td>";
+    trStr += "</tr>";
+    $("#typeList").append(trStr);
+}
+
+/**
+ * 增加用途
+ * luy
+ */
+function addType(){
+    var type = $("#editType").val();
+    $.ajax({
+        data: {type:type},
+        url: '/addType',
+        dataType: 'json',
+        type:'post',
+        success:function(data){
+            if(data.error){
+                alert(data.error);
+            }else{
+                $.ajax({
+                    data: {},
+                    url: '/getUseType',
+                    dataType: 'json',
+                    type:'get',
+                    success:function(data){
+                        if(data.error){
+                            alert(data.error);
+                        }else{
+                            $("#typeList").html("");
+                            $.each(data,function(index,item){
+                                renderTypeLIst(item);
+                            });
+                        }
+                    }
+                });
+                $("#editType").val('');
+            }
+        }
+    });
 }

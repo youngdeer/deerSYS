@@ -9,8 +9,11 @@ var Promise = require("bluebird");
 var request = require('request');
 var moment = require('moment');
 var Util = require('../model/util.js');
+var UseType = require('../model/useType.js');
 Promise.promisifyAll(Account);
 Promise.promisifyAll(Account.prototype);
+Promise.promisifyAll(UseType);
+Promise.promisifyAll(UseType.prototype);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -73,6 +76,33 @@ router.post('/deleteAccount', function(req,res){
 			return res.json({error:err});
 		}
 		res.json({success:1});
+	});
+});
+
+router.post('/addType', checkLogin);
+router.post('/addType', function(req,res){
+	var currentUser = req.session.user;
+	var useType = req.body.type;
+	var useType = new UseType(currentUser.name,useType);
+	//console.log(useType);
+	useType.saveAsync()
+		.then(function(){
+			res.json({success:1});
+		})
+		.catch(function(err){
+			return res.json({error:err});
+		});
+});
+
+
+router.get('/getUseType', checkLogin);
+router.get('/getUseType', function(req,res){
+	var user = req.session.user;
+	UseType.get(user.name,function(err,typeList){
+		if(err){
+			return res.json({error:err});
+		}
+		res.json(typeList);
 	});
 });
 
