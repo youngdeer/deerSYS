@@ -128,6 +128,10 @@ function renderSelectType(data){
  */
 function addType(){
     var type = $("#editType").val();
+    if(type.trim() == ''){
+        alert('用途不能为空！');
+        return false;
+    }
     $.ajax({
         data: {type:type},
         url: '/addType',
