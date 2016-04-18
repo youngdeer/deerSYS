@@ -16,9 +16,9 @@ WeixinMenu.createMenu = function createMenu(){
     var data = {
         "button":[
             {
-                "type":"click",
+                "type":"view",
                 "name":"deerSYS",
-                "key":"V1001_TODAY_MUSIC"
+                "url":"http://youngdeer.top/"
             },
             {
                 "name":"测试2",
