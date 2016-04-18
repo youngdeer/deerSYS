@@ -5,7 +5,7 @@ var request = require('request');
 var requestJson = require('request-json');
 var WXBizMsgCrypt = require('wechat-enterprise').WXBizMsgCrypt;
 var parseString = require('xml2js').parseString;
-var TextAutoReply = require('../model/TextAutoReply.js');
+var TextAutoReply = require('../model/textAutoReply.js');
 var Util = require('../model/util.js');
 
 var Token = 'pjvGsTj2sNXio9QVTb2N3fB';
