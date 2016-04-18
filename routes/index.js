@@ -5,6 +5,7 @@ var User = require('../model/user.js');
 var Post = require("../model/post.js");
 var Account = require('../model/account.js');
 var Weixin = require('../model/weixin.js');
+var WeixinMenu = require('../model/weixinMenu.js');
 var Promise = require("bluebird");
 var request = require('request');
 var moment = require('moment');
@@ -368,6 +369,10 @@ router.get('/logout', function(req,res){
 	req.session.user = null;
 	req.flash('success', 'logout success.');
 	res.redirect('/');
+});
+
+router.get('/createMenu', function(req,res){
+	WeixinMenu.createMenu();
 });
 
 function checkNotLogin(req,res,next){

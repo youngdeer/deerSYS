@@ -11,6 +11,7 @@ var Util = require('../model/util.js');
 var Token = 'pjvGsTj2sNXio9QVTb2N3fB';
 var EncodingAESKey = 't9aW3yr01xAadCel5OaNSOBsCckeBrTwjT3Eft314xr';
 var id = 'wxf86bb1cbf7a5b02f';
+var secret = 'AUp5EqMpAVlqN23JESKFdc1UoxFUa2yUBPgcTlFNS7wcaH-ualuKNlr8QP20RV75';
 var wxBizMsgCrypt = new WXBizMsgCrypt(Token,EncodingAESKey,id);
 
 function Weixin(){
@@ -20,13 +21,15 @@ function Weixin(){
 module.exports = Weixin;
 
 Weixin.getAccessToken = function getAccessToken(){
-    var id ='wxf86bb1cbf7a5b02f';
-    var secret = 'AUp5EqMpAVlqN23JESKFdc1UoxFUa2yUBPgcTlFNS7wcaH-ualuKNlr8QP20RV75';
+    var access_token = "";
     request.get('https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid='+id+'&corpsecret='+secret+'', function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body) ;
+            //console.log(body) ;
+            //console.log(JSON.parse(body).access_token) ;
+            access_token = JSON.parse(body).access_token;
         }
-    })
+    });
+    return access_token;
 }
 
 Weixin.get = function get(req,res,callback){
