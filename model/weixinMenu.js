@@ -13,33 +13,33 @@ module.exports = WeixinMenu;
 
 WeixinMenu.createMenu = function createMenu(){
     var client = requestJson.createClient('https://qyapi.weixin.qq.com/');
-    var access_token = Weixin.getAccessToken();
-    console.log(Weixin.getAccessToken());
     var data = {
         "button":[
             {
                 "type":"click",
-                "name":"ΩÒ»’∏Ë«˙",
+                "name":"deerSYS",
                 "key":"V1001_TODAY_MUSIC"
             },
             {
-                "name":"≤Àµ•",
+                "name":"ÊµãËØï2",
                 "sub_button":[
                     {
                         "type":"view",
-                        "name":"À—À˜",
+                        "name":"Â≠ê1",
                         "url":"http://www.soso.com/"
                     },
                     {
                         "type":"click",
-                        "name":"‘ﬁ“ªœ¬Œ“√«",
+                        "name":"Â≠ê2",
                         "key":"V1001_GOOD"
                     }
                 ]
             }
         ]
-    };
-    client.post('cgi-bin/menu/create?access_token='+access_token+'&agentid=1', data, function(err, res, body) {
-        return console.log(res.statusCode,body);
+    }
+    Weixin.getAccessToken(function (access_token) {
+        client.post('cgi-bin/menu/create?access_token='+access_token+'&agentid=1', data, function(err, res, body) {
+            return console.log(res.statusCode,body);
+        });
     });
 }

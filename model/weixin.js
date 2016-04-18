@@ -20,16 +20,15 @@ function Weixin(){
 
 module.exports = Weixin;
 
-Weixin.getAccessToken = function getAccessToken(){
-    var access_token = "";
+Weixin.getAccessToken = function getAccessToken(callback){
     request.get('https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid='+id+'&corpsecret='+secret+'', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //console.log(body) ;
             //console.log(JSON.parse(body).access_token) ;
-            access_token = JSON.parse(body).access_token;
+            var access_token = JSON.parse(body).access_token;
+            callback(access_token);
         }
     });
-    return access_token;
 }
 
 Weixin.get = function get(req,res,callback){
