@@ -2,7 +2,10 @@
  * Created by luyang on 2015/10/19.
  */
 $(document).ready(function(){
-    $("#time").datepicker({format: 'yyyy-mm-dd'});
+    $("#time").datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose:true
+    });
 });
 
 function deleteById(id){
