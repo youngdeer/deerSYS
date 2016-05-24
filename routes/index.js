@@ -364,6 +364,22 @@ router.post('/login', function(req,res){
 	});
 });
 
+router.post('/androidLogin',function(req,res){
+	var md5 = crypto.createHash('md5');
+	var password = md5.update(req.body.password).digest('base64');
+	var username = req.body.username;
+	//console.log(username+"--"+password);
+	User.get(username, function(err, user){
+		if(!user){
+			return res.send("login fail");
+		}
+		if(user.password != password){
+			return res.send("password is not correct");
+		}
+		res.send("login success")
+	});
+});
+
 router.get('/logout', checkLogin);
 router.get('/logout', function(req,res){
 	req.session.user = null;
