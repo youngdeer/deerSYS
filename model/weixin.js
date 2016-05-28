@@ -156,7 +156,7 @@ Weixin.sendTotalCost = function sendTotalCost(context){
         "msgtype": "text",
         "agentid": 1,
         "text": {
-            "content": context
+            "content": "totalCost: "+context
         },
         "safe":"0"
     }

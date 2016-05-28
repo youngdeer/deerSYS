@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7e58cb0-a6f0-452d-81f5-f330aaf4aef3" name="Default" comment="页面优化">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="b7e58cb0-a6f0-452d-81f5-f330aaf4aef3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/weixin.js" afterPath="$PROJECT_DIR$/model/weixin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/weixinMenu.js" afterPath="$PROJECT_DIR$/model/weixinMenu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
     </list>
     <ignored path="microblog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="weixin.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="weixin.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/weixin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="158" column="30" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
+            <state relative-caret-position="144">
+              <caret line="158" column="37" selection-start-line="158" selection-start-column="37" selection-end-line="158" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -47,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="weixinMenu.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="weixinMenu.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/weixinMenu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="48" column="7" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+            <state relative-caret-position="486">
+              <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -62,8 +59,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-55">
-              <caret line="401" column="38" selection-start-line="401" selection-start-column="38" selection-end-line="401" selection-end-column="38" />
+            <state relative-caret-position="59">
+              <caret line="389" column="23" selection-start-line="389" selection-start-column="13" selection-end-line="389" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -110,8 +107,8 @@
         <option value="$PROJECT_DIR$/views/managerMoney.jade" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/model/weixin.js" />
         <option value="$PROJECT_DIR$/model/weixinMenu.js" />
+        <option value="$PROJECT_DIR$/model/weixin.js" />
       </list>
     </option>
   </component>
@@ -341,7 +338,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1440914428558</updated>
-      <workItem from="1464414373370" duration="3388000" />
+      <workItem from="1464414373370" duration="3785000" />
     </task>
     <task id="LOCAL-00001" summary="table search">
       <created>1445394556130</created>
@@ -581,11 +578,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462520237195</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="功能增加">
+      <created>1464418038385</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1464418038385</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3388000" />
+    <option name="totallyTimeSpent" value="3785000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -647,11 +651,11 @@
     <MESSAGE value="微信自动回复" />
     <MESSAGE value="代码优化" />
     <MESSAGE value="功能优化" />
-    <MESSAGE value="功能增加" />
     <MESSAGE value="。。" />
     <MESSAGE value="模态框布局修改" />
     <MESSAGE value="页面优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="页面优化" />
+    <MESSAGE value="功能增加" />
+    <option name="LAST_COMMIT_MESSAGE" value="功能增加" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1002,29 +1006,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/weixin.js">
+    <entry file="file://$PROJECT_DIR$/model/weixinMenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="158" column="30" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="486">
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="401" column="38" selection-start-line="401" selection-start-column="38" selection-end-line="401" selection-end-column="38" />
+        <state relative-caret-position="59">
+          <caret line="389" column="23" selection-start-line="389" selection-start-column="13" selection-end-line="389" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/weixinMenu.js">
+    <entry file="file://$PROJECT_DIR$/model/weixin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="48" column="7" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="144">
+          <caret line="158" column="37" selection-start-line="158" selection-start-column="37" selection-end-line="158" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
