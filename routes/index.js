@@ -391,6 +391,19 @@ router.get('/createMenu', function(req,res){
 	WeixinMenu.createMenu();
 });
 
+router.get('/sendTotalCost', function(req,res){
+	Account.get("deer",function(err,accounts,totalCost){
+		var context = "";
+		if(err){
+			context = "error";
+		}else{
+			context = totalCost.toString();
+		}
+		Weixin.sendTotalCost(context);
+	});
+
+});
+
 function checkNotLogin(req,res,next){
 	if(req.session.user){
 		req.flash('error', 'user is already login.');
@@ -406,5 +419,7 @@ function checkLogin(req,res,next){
 	}
 	next();
 }
+
+
 
 module.exports = router;

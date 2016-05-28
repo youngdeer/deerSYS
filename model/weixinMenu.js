@@ -34,6 +34,11 @@ WeixinMenu.createMenu = function createMenu(){
                         "key":"V1001_GOOD"
                     }
                 ]
+            },
+            {
+                "type":"view",
+                "name":"getTotalCost",
+                "url":"http://youngdeer.top/sendTotalCost"
             }
         ]
     }

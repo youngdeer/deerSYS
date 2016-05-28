@@ -7,6 +7,7 @@ var WXBizMsgCrypt = require('wechat-enterprise').WXBizMsgCrypt;
 var parseString = require('xml2js').parseString;
 var TextAutoReply = require('../model/textAutoReply.js');
 var Util = require('../model/util.js');
+var Account = require('../model/account.js');
 
 var Token = 'pjvGsTj2sNXio9QVTb2N3fB';
 var EncodingAESKey = 't9aW3yr01xAadCel5OaNSOBsCckeBrTwjT3Eft314xr';
@@ -143,5 +144,25 @@ Weixin.getMedia = function getMedia(){
     };
     client.post('cgi-bin/material/batchget_material?access_token=6QWLCF4Jb2UPHcOUyq8VDdp4aFx_uPbIoHeCYMQd5hSC_OQgoRL036OxZrCPVXWT3nxd7tnVPy6Vg9jkZTJbsDx3TCev781qFI_DwU5KRjcAOWiAIAHVD', data, function(err, res, body) {
         return console.log(res.statusCode,body);
+    });
+}
+
+Weixin.sendTotalCost = function sendTotalCost(context){
+    var client = requestJson.createClient('https://qyapi.weixin.qq.com/');
+    var data = {
+        "touser": "youngdeer",
+        "toparty": "1",
+        "totag": "",
+        "msgtype": "text",
+        "agentid": 1,
+        "text": {
+            "content": context
+        },
+        "safe":"0"
+    }
+    Weixin.getAccessToken(function (access_token) {
+        client.post('cgi-bin/message/send?access_token='+access_token, data, function(err, res, body) {
+            return console.log(res.statusCode,body);
+        });
     });
 }
