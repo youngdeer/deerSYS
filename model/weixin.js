@@ -129,7 +129,7 @@ function sendEventMsg(){
         }else{
             context = totalCost.toString();
         }
-        sendTotalCost(context);
+        Weixin.sendTotalCost(context);
     });
 }
 

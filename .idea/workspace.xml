@@ -26,8 +26,8 @@
       <file leaf-file-name="weixin.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/weixin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="75" column="43" selection-start-line="75" selection-start-column="43" selection-end-line="75" selection-end-column="43" />
+            <state relative-caret-position="357">
+              <caret line="131" column="38" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -348,7 +348,7 @@
       <option name="presentableId" value="Default" />
       <updated>1440914428558</updated>
       <workItem from="1464414373370" duration="3785000" />
-      <workItem from="1464609954509" duration="1943000" />
+      <workItem from="1464609954509" duration="2253000" />
     </task>
     <task id="LOCAL-00001" summary="table search">
       <created>1445394556130</created>
@@ -599,7 +599,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5728000" />
+    <option name="totallyTimeSpent" value="6038000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1032,8 +1032,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/weixin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="75" column="43" selection-start-line="75" selection-start-column="43" selection-end-line="75" selection-end-column="43" />
+        <state relative-caret-position="357">
+          <caret line="131" column="38" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="38" />
           <folding />
         </state>
       </provider>
