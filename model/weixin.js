@@ -72,8 +72,8 @@ function processMsg(req,res){
                 //处理文本消息
                 sendTextMsg(syntonyData,res);
             case 'event' :
-                //处理文本消息
-                sendTextMsg(syntonyData,res);
+                //处理event消息
+                eventDeal(syntonyData,res);
                 break;
             default :
         }
