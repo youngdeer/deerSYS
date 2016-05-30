@@ -151,7 +151,7 @@ Weixin.sendTotalCost = function sendTotalCost(context){
     var client = requestJson.createClient('https://qyapi.weixin.qq.com/');
     var data = {
         "touser": "youngdeer",
-        "toparty": "1",
+        "toparty": "",
         "totag": "",
         "msgtype": "text",
         "agentid": 1,
