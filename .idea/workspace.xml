@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7e58cb0-a6f0-452d-81f5-f330aaf4aef3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/weixin.js" afterPath="$PROJECT_DIR$/model/weixin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/weixinMenu.js" afterPath="$PROJECT_DIR$/model/weixinMenu.js" />
     </list>
     <ignored path="microblog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +26,8 @@
       <file leaf-file-name="weixin.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/weixin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+            <state relative-caret-position="169">
+              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -61,8 +58,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="389" column="23" selection-start-line="389" selection-start-column="13" selection-end-line="389" selection-end-column="23" />
+            <state relative-caret-position="97">
+              <caret line="391" column="3" selection-start-line="391" selection-start-column="3" selection-end-line="391" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -341,7 +338,7 @@
       <option name="presentableId" value="Default" />
       <updated>1440914428558</updated>
       <workItem from="1464414373370" duration="3785000" />
-      <workItem from="1464609954509" duration="800000" />
+      <workItem from="1464609954509" duration="1183000" />
     </task>
     <task id="LOCAL-00001" summary="table search">
       <created>1445394556130</created>
@@ -592,7 +589,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4585000" />
+    <option name="totallyTimeSpent" value="4968000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1003,6 +1000,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="391" column="3" selection-start-line="391" selection-start-column="3" selection-end-line="391" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/weixinMenu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1013,18 +1018,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="389" column="23" selection-start-line="389" selection-start-column="13" selection-end-line="389" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/weixin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+        <state relative-caret-position="169">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
           <folding />
         </state>
       </provider>

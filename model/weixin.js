@@ -61,13 +61,16 @@ function processMsg(req,res){
     req.on('end',function(){
         //console.log('Accept Data: '+postData);
         var syntonyData = parseSyntonyData(postData);
-        //console.log(syntonyData);
+        console.log(syntonyData);
         var msgType = syntonyData.xml.MsgType;
         console.log(msgType);
         switch (msgType){
             case 'text' :
                 //处理文本消息
-                sendTextMsg(syntonyData,res)
+                sendTextMsg(syntonyData,res);
+            case 'event' :
+                //处理文本消息
+                sendTextMsg(syntonyData,res);
                 break;
             default :
         }
