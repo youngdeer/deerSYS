@@ -63,6 +63,7 @@ function processMsg(req,res){
         var syntonyData = parseSyntonyData(postData);
         //console.log(syntonyData);
         var msgType = syntonyData.xml.MsgType;
+        console.log(msgType);
         switch (msgType){
             case 'text' :
                 //处理文本消息

@@ -30,8 +30,8 @@ WeixinMenu.createMenu = function createMenu(){
                     },
                     {
                         "type":"click",
-                        "name":"子2",
-                        "key":"V1001_GOOD"
+                        "name":"获取总开销",
+                        "key":"V1001_GETTOTAL"
                     }
                 ]
             },
