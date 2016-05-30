@@ -7,7 +7,10 @@ var WXBizMsgCrypt = require('wechat-enterprise').WXBizMsgCrypt;
 var parseString = require('xml2js').parseString;
 var TextAutoReply = require('../model/textAutoReply.js');
 var Util = require('../model/util.js');
+var Promise = require("bluebird");
 var Account = require('../model/account.js');
+Promise.promisifyAll(Account);
+Promise.promisifyAll(Account.prototype);
 
 var Token = 'pjvGsTj2sNXio9QVTb2N3fB';
 var EncodingAESKey = 't9aW3yr01xAadCel5OaNSOBsCckeBrTwjT3Eft314xr';
@@ -101,6 +104,33 @@ function parseSyntonyData(postData){
     });
 
     return syntonyData;
+}
+
+/**
+ * 处理event事件
+ */
+function eventDeal(syntonyData,res){
+    var eventKey = syntonyData.xml.EventKey;
+    switch (eventKey){
+        case 'V1001_GETTOTAL' :
+            sendEventMsg();
+        default :
+    }
+}
+
+/**
+ * 事件处理返回(V1001_GETTOTAL)
+ */
+function sendEventMsg(){
+    Account.get("deer",function(err,accounts,totalCost){
+        var context = "";
+        if(err){
+            context = "error";
+        }else{
+            context = totalCost.toString();
+        }
+        sendTotalCost(context);
+    });
 }
 
 /*
