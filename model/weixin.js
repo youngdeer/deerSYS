@@ -113,7 +113,7 @@ function eventDeal(syntonyData,res){
     var eventKey = syntonyData.xml.EventKey;
     switch (eventKey){
         case 'V1001_GETTOTAL' :
-            sendEventMsg();
+            sendEventMsg(res);
         default :
     }
 }
@@ -121,7 +121,7 @@ function eventDeal(syntonyData,res){
 /**
  * 事件处理返回(V1001_GETTOTAL)
  */
-function sendEventMsg(){
+function sendEventMsg(res){
     Account.get("deer",function(err,accounts,totalCost){
         var context = "";
         if(err){
@@ -130,6 +130,7 @@ function sendEventMsg(){
             context = totalCost.toString();
         }
         Weixin.sendTotalCost(context);
+        res.send("");
     });
 }
 
