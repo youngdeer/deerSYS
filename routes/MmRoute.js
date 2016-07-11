@@ -75,7 +75,7 @@ router.get('/', function(req,res,next){
             }
 
             res.render('managerMoney',{
-                title: '¼ÇÕË±¾',
+                title: 'è®°è´¦æœ¬',
                 accounts: accounts,
                 typeList: typeList,
                 totalCost:totalCost.toString(),
@@ -132,7 +132,7 @@ router.post('/', function(req,res){
                 }
 
                 res.render('managerMoney',{
-                    title: '¼ÇÕË±¾',
+                    title: 'è®°è´¦æœ¬',
                     accounts: accounts,
                     typeList: typeList,
                     totalCost:totalCost.toString(),
