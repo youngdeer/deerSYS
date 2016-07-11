@@ -13,7 +13,7 @@ function deleteById(id){
     if(flag){
         $.ajax({
             data: {accountId:id},
-            url: '/deleteAccount',
+            url: '/managerMoney/deleteAccount',
             dataType: 'json',
             type:'post',
             success:function(data){
@@ -43,7 +43,7 @@ function refresh(){
 function editType(){
     $.ajax({
         data: {},
-        url: '/getUseType',
+        url: '/managerMoney/getUseType',
         dataType: 'json',
         type:'get',
         success:function(data){
@@ -82,7 +82,7 @@ function deleteType(id){
     if(flag){
         $.ajax({
             data: {id:id},
-            url: '/deleteUseType',
+            url: '/managerMoney/deleteUseType',
             dataType: 'json',
             type:'post',
             success:function(data){
@@ -91,7 +91,7 @@ function deleteType(id){
                 }else{
                     $.ajax({
                         data: {},
-                        url: '/getUseType',
+                        url: '/managerMoney/getUseType',
                         dataType: 'json',
                         type:'get',
                         success:function(data){
@@ -137,7 +137,7 @@ function addType(){
     }
     $.ajax({
         data: {type:type},
-        url: '/addType',
+        url: '/managerMoney/addType',
         dataType: 'json',
         type:'post',
         success:function(data){
@@ -146,7 +146,7 @@ function addType(){
             }else{
                 $.ajax({
                     data: {},
-                    url: '/getUseType',
+                    url: '/managerMoney/getUseType',
                     dataType: 'json',
                     type:'get',
                     success:function(data){

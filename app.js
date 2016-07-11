@@ -8,6 +8,7 @@ var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var mmRoute = require('./routes/MmRoute');
 
 //采用connect-mongodb中间件作为Session存储  
 var session = require('express-session');  
@@ -79,7 +80,7 @@ app.use('/login', routes);
 app.post('/doLogin', routes);
 app.use('/logout', routes);
 app.use('/users', users);
-app.use('/managerMoney', routes);
+app.use('/managerMoney', mmRoute);
 app.use('/mobileReg', routes);
 app.use('/WXtest', routes);
 
