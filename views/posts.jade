@@ -2,8 +2,8 @@
   div.row
     - for(var j = i-3; j < i && j < posts.length; j++)
       div.col-md-4
-        h2
+        h4
           a(href='/u/'+posts[j].user)=posts[j].user 
               !='   say:'
-        p!='<small>' + posts[j].time + '</small>'
-        p=posts[j].post
+        p!=posts[j].post
+        p!='<small>date:' + posts[j].time + '</small>'

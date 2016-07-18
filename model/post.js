@@ -1,4 +1,5 @@
 var mongodb = require('./db');
+var moment = require('moment');
 
 function Post(username, post, time){
 	this.user = username;
@@ -6,7 +7,7 @@ function Post(username, post, time){
 	if(time){
 		this.time = time;
 	}else{
-		this.time = new Date();
+		this.time = moment().format('YYYY-MM-DD');
 	}
 }
 
