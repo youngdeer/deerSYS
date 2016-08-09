@@ -6,4 +6,4 @@
           a(href='/u/'+posts[j].user)=posts[j].user 
               !='   say:'
         p!=posts[j].post
-        p!='<small>date:' + posts[j].time + '</small>'
+        p!='<small>date:' + posts[j].time + '</small><small onclick="deletePost(\''+posts[j].id+'\')" style="float:right;color:#FF44AA;">delete</small>'

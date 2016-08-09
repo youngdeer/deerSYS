@@ -29,6 +29,17 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.post('/deletePost', checkLogin);
+router.post('/deletePost', function(req,res){
+	var id = req.body.postId;
+	Post.delete(id,function(err){
+		if(err){
+			return res.json({error:err});
+		}
+		res.json({success:1});
+	});
+});
+
 //router.get('/hello', function(req,res,next){
 //	res.send('Time is '+new Date().toString );
 //});
