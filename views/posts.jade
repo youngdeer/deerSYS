@@ -1,7 +1,7 @@
 - for (var i = 3; i < posts.length+3; i = i + 3)
   div.row
     - for(var j = i-3; j < i && j < posts.length; j++)
-      div.col-md-4
+      div.col-md-4(style="background:#eeeeee;")
         h4
           a(href='/u/'+posts[j].user)=posts[j].user 
               !='   say:'

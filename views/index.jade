@@ -4,18 +4,18 @@ block content
   include alert.jade
   - if (!user)
     .hero-unit
-      h3 welcome deerSYS
-      p deerSYS is a node system
+      h4 welcome deerSYS
+      p it is a node system
       p
-        a.btn.btn-primary.btn-large(href="/login") login
-        a.btn.btn-large(href="/reg") register
-        a.btn.btn-info.btn-large(href="/mobileReg") mobileReg
+        a.btn.btn-primary(href="/login") login
+        a.btn.btn-info(href="/reg") register
+        //a.btn.btn-info(href="/mobileReg") mobileReg
         //a.btn.btn-warning.btn-large(href="/WXtest") WXtest
   - else
     include ./say.jade
   include ./posts.jade
   .row
     .span4
-      h2  builder: Deer Young
+      h3  builder: Deer Young
       p Welcome
       
