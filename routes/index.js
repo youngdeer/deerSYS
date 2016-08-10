@@ -29,7 +29,6 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.post('/deletePost', checkLogin);
 router.post('/deletePost', function(req,res){
 	var id = req.body.postId;
 	Post.delete(id,function(err){
