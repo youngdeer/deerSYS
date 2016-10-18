@@ -9,6 +9,7 @@ var flash = require('connect-flash');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var mmRoute = require('./routes/MmRoute');
+var deerWork = require('./routes/deerWork');
 
 //采用connect-mongodb中间件作为Session存储  
 var session = require('express-session');  
@@ -83,6 +84,7 @@ app.use('/users', users);
 app.use('/managerMoney', mmRoute);
 app.use('/mobileReg', routes);
 app.use('/WXtest', routes);
+app.use('/DeerWork', deerWork);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

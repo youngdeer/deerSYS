@@ -1,0 +1,836 @@
+doctype html
+html
+   head
+
+      meta(charset='utf-8')
+      title Free HTML5 Bootstrap Admin Template
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      meta(name='description', content='Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.')
+      meta(name='author', content='Muhammad Usman')
+      // The styles
+      link#bs-css(href='css/bootstrap-cerulean.min.css', rel='stylesheet')
+
+      link(href='css/charisma-app.css', rel='stylesheet')
+
+      link(href='bower_components/fullcalendar/dist/fullcalendar.css', rel='stylesheet')
+
+      link(href='bower_components/fullcalendar/dist/fullcalendar.print.css', rel='stylesheet', media='print')
+
+      link(href='bower_components/chosen/chosen.min.css', rel='stylesheet')
+
+      link(href='bower_components/colorbox/example3/colorbox.css', rel='stylesheet')
+
+      link(href='bower_components/responsive-tables/responsive-tables.css', rel='stylesheet')
+
+      link(href='bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css', rel='stylesheet')
+
+      link(href='css/jquery.noty.css', rel='stylesheet')
+
+      link(href='css/noty_theme_default.css', rel='stylesheet')
+
+      link(href='css/elfinder.min.css', rel='stylesheet')
+
+      link(href='css/elfinder.theme.css', rel='stylesheet')
+
+      link(href='css/jquery.iphone.toggle.css', rel='stylesheet')
+
+      link(href='css/uploadify.css', rel='stylesheet')
+
+      link(href='css/animate.min.css', rel='stylesheet')
+      // jQuery
+      script(src='bower_components/jquery/jquery.min.js')
+      // The HTML5 shim, for IE6-8 support of HTML5 elements
+      //if lt IE 9
+        script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+      // The fav icon
+      link(rel='shortcut icon', href='img/favicon.ico')
+   body
+      // topbar starts
+      .navbar.navbar-default(role='navigation')
+         .navbar-inner
+            button.navbar-toggle.pull-left.animated.flip(type='button')
+               span.sr-only Toggle navigation
+               span.icon-bar
+               span.icon-bar
+               
+               span.icon-bar
+            
+            a.navbar-brand(href='index.html')
+               img.hidden-xs(alt='Charisma Logo', src='img/logo20.png')
+               
+               span Charisma
+            // user dropdown starts
+            .btn-group.pull-right
+               button.btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+                  i.glyphicon.glyphicon-user
+                  span.hidden-sm.hidden-xs  admin
+                  
+                  span.caret
+               
+               ul.dropdown-menu
+                  li
+                     a(href='#') Profile
+                  
+                  li.divider
+                  
+                  li
+                     a(href='login.html') Logout
+            // user dropdown ends
+            // theme selector starts
+            .btn-group.pull-right.theme-container.animated.tada
+               button.btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+                  i.glyphicon.glyphicon-tint
+                  span.hidden-sm.hidden-xs  Change Theme / Skin
+                  
+                  span.caret
+               
+               ul#themes.dropdown-menu
+                  li
+                     a(data-value='classic', href='#')
+                        i.whitespace
+                        |  Classic
+                  
+                  li
+                     a(data-value='cerulean', href='#')
+                        i.whitespace
+                        |  Cerulean
+                  
+                  li
+                     a(data-value='cyborg', href='#')
+                        i.whitespace
+                        |  Cyborg
+                  
+                  li
+                     a(data-value='simplex', href='#')
+                        i.whitespace
+                        |  Simplex
+                  
+                  li
+                     a(data-value='darkly', href='#')
+                        i.whitespace
+                        |  Darkly
+                  
+                  li
+                     a(data-value='lumen', href='#')
+                        i.whitespace
+                        |  Lumen
+                  
+                  li
+                     a(data-value='slate', href='#')
+                        i.whitespace
+                        |  Slate
+                  
+                  li
+                     a(data-value='spacelab', href='#')
+                        i.whitespace
+                        |  Spacelab
+                  
+                  li
+                     a(data-value='united', href='#')
+                        i.whitespace
+                        |  United
+            // theme selector ends
+            ul.collapse.navbar-collapse.nav.navbar-nav.top-menu
+               li
+                  a(href='#')
+                     i.glyphicon.glyphicon-globe
+                     |  Visit Site
+               
+               li.dropdown
+                  a(href='#', data-toggle='dropdown')
+                     i.glyphicon.glyphicon-star
+                     |  Dropdown
+                     span.caret
+                  
+                  ul.dropdown-menu(role='menu')
+                     li
+                        a(href='#') Action
+                     
+                     li
+                        a(href='#') Another action
+                     
+                     li
+                        a(href='#') Something else here
+                     
+                     li.divider
+                     
+                     li
+                        a(href='#') Separated link
+                     
+                     li.divider
+                     
+                     li
+                        a(href='#') One more separated link
+               
+               li
+                  form.navbar-search.pull-left
+                     input.search-query.form-control.col-md-10(placeholder='Search', name='query', type='text')
+      // topbar ends
+      .ch-container
+         .row
+            // left menu starts
+            .col-sm-2.col-lg-2
+               .sidebar-nav
+                  .nav-canvas
+                     .nav-sm.nav.nav-stacked
+                     
+                     ul.nav.nav-pills.nav-stacked.main-menu
+                        li.nav-header Main
+                        
+                        li
+                           a.ajax-link(href='index.html')
+                              i.glyphicon.glyphicon-home
+                              span  Dashboard
+                        
+                        li
+                           a.ajax-link(href='ui.html')
+                              i.glyphicon.glyphicon-eye-open
+                              span  UI Features
+                        
+                        li
+                           a.ajax-link(href='form.html')
+                              i.glyphicon.glyphicon-edit
+                              span  Forms
+                        
+                        li
+                           a.ajax-link(href='chart.html')
+                              i.glyphicon.glyphicon-list-alt
+                              span  Charts
+                        
+                        li
+                           a.ajax-link(href='typography.html')
+                              i.glyphicon.glyphicon-font
+                              span  Typography
+                        
+                        li
+                           a.ajax-link(href='gallery.html')
+                              i.glyphicon.glyphicon-picture
+                              span  Gallery
+                        
+                        li.nav-header.hidden-md Sample Section
+                        
+                        li
+                           a.ajax-link(href='table.html')
+                              i.glyphicon.glyphicon-align-justify
+                              span  Tables
+                        
+                        li.accordion
+                           a(href='#')
+                              i.glyphicon.glyphicon-plus
+                              span  Accordion Menu
+                           
+                           ul.nav.nav-pills.nav-stacked
+                              li
+                                 a(href='#') Child Menu 1
+                              
+                              li
+                                 a(href='#') Child Menu 2
+                        
+                        li
+                           a.ajax-link(href='calendar.html')
+                              i.glyphicon.glyphicon-calendar
+                              span  Calendar
+                        
+                        li
+                           a.ajax-link(href='grid.html')
+                              i.glyphicon.glyphicon-th
+                              span  Grid
+                        
+                        li
+                           a(href='tour.html')
+                              i.glyphicon.glyphicon-globe
+                              span  Tour
+                        
+                        li
+                           a.ajax-link(href='icon.html')
+                              i.glyphicon.glyphicon-star
+                              span  Icons
+                        
+                        li
+                           a(href='error.html')
+                              i.glyphicon.glyphicon-ban-circle
+                              span  Error Page
+                        
+                        li
+                           a(href='login.html')
+                              i.glyphicon.glyphicon-lock
+                              span  Login Page
+                     
+                     label#for-is-ajax(for='is-ajax')
+                        input#is-ajax(type='checkbox')
+            noscript
+               .alert.alert-block.col-md-12
+                  h4.alert-heading Warning!
+                  
+                  p
+                     | You need to have
+                     a(href='http://en.wikipedia.org/wiki/JavaScript', target='_blank') JavaScript
+                     | enabled to use this site.
+            
+            #content.col-lg-10.col-sm-10
+               // content starts
+               div
+                  ul.breadcrumb
+                     li
+                        a(href='#') Home
+                     
+                     li
+                        a(href='#') Dashboard
+               .row
+                  .col-md-3.col-sm-3.col-xs-6
+                     a.well.top-block(data-toggle='tooltip', title='6 new members.', href='#')
+                        i.glyphicon.glyphicon-user.blue
+                        
+                        div Total Members
+                        
+                        div 507
+                        
+                        span.notification 6
+                  
+                  .col-md-3.col-sm-3.col-xs-6
+                     a.well.top-block(data-toggle='tooltip', title='4 new pro members.', href='#')
+                        i.glyphicon.glyphicon-star.green
+                        
+                        div Pro Members
+                        
+                        div 228
+                        
+                        span.notification.green 4
+                  
+                  .col-md-3.col-sm-3.col-xs-6
+                     a.well.top-block(data-toggle='tooltip', title='$34 new sales.', href='#')
+                        i.glyphicon.glyphicon-shopping-cart.yellow
+                        
+                        div Sales
+                        
+                        div $13320
+                        
+                        span.notification.yellow $34
+                  
+                  .col-md-3.col-sm-3.col-xs-6
+                     a.well.top-block(data-toggle='tooltip', title='12 new messages.', href='#')
+                        i.glyphicon.glyphicon-envelope.red
+                        
+                        div Messages
+                        
+                        div 25
+                        
+                        span.notification.red 12
+               .row
+                  .box.col-md-12
+                     .box-inner
+                        .box-header.well
+                           h2
+                              i.glyphicon.glyphicon-info-sign
+                              |  Introduction
+                           
+                           .box-icon
+                              a.btn.btn-setting.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-cog
+                              
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+                              
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+                        
+                        .box-content.row
+                           .col-lg-7.col-md-12
+                              h1 Charisma
+                                 br
+                                 small free, premium quality, responsive, multiple skin admin template.
+                              
+                              p
+                                  | It&apos;s a live demo of the template. I have created Charisma to ease the repeat work I have to do on my
+                                  | projects. Now I re-use Charisma as a base for my admin panel work and I am sharing it with you
+                              
+                              p
+                                 b
+                                     | All pages in the menu are functional, take a look at all, please share this with your
+                                     | followers.
+                              
+                              p.center-block.download-buttons
+                                 a.btn.btn-primary.btn-lg(href='http://usman.it/free-responsive-admin-template/')
+                                    i.glyphicon.glyphicon-chevron-left.glyphicon-white
+                                    |  Back to article
+                                 
+                                 a.btn.btn-default.btn-lg(href='http://usman.it/free-responsive-admin-template/')
+                                    i.glyphicon.glyphicon-download-alt
+                                    |  Download Page
+               .row
+                  .box.col-md-4
+                     .box-inner.homepage-box
+                        .box-header.well
+                           h2
+                              i.glyphicon.glyphicon-th
+                              |  Tabs
+                           
+                           .box-icon
+                              a.btn.btn-setting.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-cog
+                              
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+                              
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+                        
+                        .box-content
+                           ul#myTab.nav.nav-tabs
+                              li.active
+                                 a(href='#info') Info
+                              
+                              li
+                                 a(href='#custom') Custom
+                              
+                              li
+                                 a(href='#messages') Messages
+                           
+                           #myTabContent.tab-content
+                              #info.tab-pane.active
+                                 h3
+                                    | Charisma
+                                    small a full featured template
+                                 
+                                 p
+                                     | It&apos;s a full featured, responsive template for your admin panel. It&apos;s optimized for tablets
+                                     | and mobile phones.
+                                 
+                                 p Check how it looks on different devices:
+                                 
+                                 a(href='http://www.responsinator.com/?url=usman.it%2Fthemes%2Fcharisma', target='_blank')
+                                    strong Preview on iPhone size.
+                                 
+                                 br
+                                 
+                                 a(href='http://www.responsinator.com/?url=usman.it%2Fthemes%2Fcharisma', target='_blank')
+                                    strong Preview on iPad size.
+                              
+                              #custom.tab-pane
+                                 h3
+                                    | Custom
+                                    small small text
+                                 
+                                 p Sample paragraph.
+                                 
+                                 p Your custom text.
+                              
+                              #messages.tab-pane
+                                 h3
+                                    | Messages
+                                    small small text
+                                 
+                                 p Sample paragraph.
+                                 
+                                 p Your custom text.
+                  // /span
+                  .box.col-md-4
+                     .box-inner
+                        .box-header.well(data-original-title='')
+                           h2
+                              i.glyphicon.glyphicon-user
+                              |  Member Activity
+                           
+                           .box-icon
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+                              
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+                        
+                        .box-content
+                           .box-content
+                              ul.dashboard-list
+                                 li
+                                    a(href='#')
+                                       img.dashboard-avatar(alt='Usman', src='http://www.gravatar.com/avatar/f0ea51fa1e4fae92608d8affee12f67b.png?s=50')
+                                    
+                                    strong Name:
+                                    
+                                    a(href='#')
+                                       | Usman
+                                    br
+                                    
+                                    strong Since:17/05/2014
+                                    br
+                                    
+                                    strong Status:
+                                    
+                                    span.label-success.label.label-default Approved
+                                 
+                                 li
+                                    a(href='#')
+                                       img.dashboard-avatar(alt='Sheikh Heera', src='http://www.gravatar.com/avatar/3232415a0380253cfffe19163d04acab.png?s=50')
+                                    
+                                    strong Name:
+                                    
+                                    a(href='#')
+                                        | Sheikh Heera
+                                    br
+                                    
+                                    strong Since:17/05/2014
+                                    br
+                                    
+                                    strong Status:
+                                    
+                                    span.label-warning.label.label-default Pending
+                                 
+                                 li
+                                    a(href='#')
+                                       img.dashboard-avatar(alt='Abdullah', src='http://www.gravatar.com/avatar/46056f772bde7c536e2086004e300a04.png?s=50')
+                                    
+                                    strong Name:
+                                    
+                                    a(href='#')
+                                        | Abdullah
+                                    br
+                                    
+                                    strong Since:25/05/2014
+                                    br
+                                    
+                                    strong Status:
+                                    
+                                    span.label-default.label.label-danger Banned
+                                 
+                                 li
+                                    a(href='#')
+                                       img.dashboard-avatar(alt='Sana Amrin', src='http://www.gravatar.com/avatar/hash')
+                                    
+                                    strong Name:
+                                    
+                                    a(href='#') Sana Amrin
+                                    br
+                                    
+                                    strong Since:17/05/2014
+                                    br
+                                    
+                                    strong Status:
+                                    
+                                    span.label.label-info Updates
+                  // /span
+                  .box.col-md-4
+                     .box-inner.homepage-box
+                        .box-header.well(data-original-title='')
+                           h2
+                              i.glyphicon.glyphicon-list-alt
+                              |  Keep in touch
+                           
+                           .box-icon
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+                              
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+                        
+                        .box-content
+                           h3 Stay updated with my projects and blog posts
+                           // Begin MailChimp Signup Form
+                           .mc_embed_signup
+                              form#mc-embedded-subscribe-form.validate(action='//halalit.us3.list-manage.com/subscribe/post?u=444b176aa3c39f656c66381f6&id=eeb0c04e84', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='')
+                                 div
+                                    label Please enter your email
+                                    
+                                    input.email(type='email', value='', name='EMAIL', placeholder='Email address', required='')
+                                    
+                                    .power_field
+                                       input(type='text', name='b_444b176aa3c39f656c66381f6_eeb0c04e84', tabindex='-1', value='')
+                                    
+                                    .clear
+                                       input.button(type='submit', value='Subscribe', name='subscribe')
+                           // End mc_embed_signup
+                           br
+                           
+                           p
+                              | You may like my other open source work, check my profile on
+                              a(href='http://github.com/usmanhalalit', target='_blank') GitHub.
+                  // /span
+               // /row
+               .row
+                  .box.col-md-4
+                     .box-inner
+                        .box-header.well(data-original-title='')
+                           h2
+                              i.glyphicon.glyphicon-list
+                              |  Buttons
+                           
+                           .box-icon
+                              a.btn.btn-setting.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-cog
+                              
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+                              
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+                        
+                        .box-content.buttons
+                           p.btn-group
+                              button.btn.btn-default Left
+                              
+                              button.btn.btn-default Middle
+                              
+                              button.btn.btn-default Right
+                           
+                           p
+                              button.btn.btn-default.btn-sm
+                                 i.glyphicon.glyphicon-star
+                                 |  Icon button
+                              
+                              button.btn.btn-primary.btn-sm Small button
+                              
+                              button.btn.btn-danger.btn-sm Small button
+                           
+                           p
+                              button.btn.btn-warning.btn-sm Small button
+                              
+                              button.btn.btn-success.btn-sm Small button
+                              
+                              button.btn.btn-info.btn-sm Small button
+                           
+                           p
+                              button.btn.btn-inverse.btn-default.btn-sm Small button
+                              
+                              button.btn.btn-primary.btn-round.btn-lg Round button
+                              
+                              button.btn.btn-round.btn-default.btn-lg
+                                 i.glyphicon.glyphicon-ok
+                              
+                              button.btn.btn-primary
+                                 i.glyphicon.glyphicon-edit.glyphicon-white
+                           
+                           p
+                              button.btn.btn-default.btn-xs Mini button
+                              
+                              button.btn.btn-primary.btn-xs Mini button
+                              
+                              button.btn.btn-danger.btn-xs Mini button
+                              
+                              button.btn.btn-warning.btn-xs Mini button
+                           
+                           p
+                              button.btn.btn-info.btn-xs Mini button
+                              
+                              button.btn.btn-success.btn-xs Mini button
+                              
+                              button.btn.btn-inverse.btn-default.btn-xs Mini button
+                  // /span
+                  .box.col-md-4
+                     .box-inner
+                        .box-header.well(data-original-title='')
+                           h2
+                              i.glyphicon.glyphicon-list
+                              |  Buttons
+                           
+                           .box-icon
+                              a.btn.btn-setting.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-cog
+                              
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+                              
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+                        
+                        .box-content.buttons
+                           p
+                              button.btn.btn-default.btn-lg Large button
+                              
+                              button.btn.btn-primary.btn-lg Large button
+                           
+                           p
+                              button.btn.btn-danger.btn-lg Large button
+                              
+                              button.btn.btn-warning.btn-lg Large button
+                           
+                           p
+                              button.btn.btn-success.btn-lg Large button
+                              
+                              button.btn.btn-info.btn-lg Large button
+                           
+                           p
+                              button.btn.btn-inverse.btn-default.btn-lg Large button
+                           
+                           .btn-group
+                              button.btn.btn-default.btn-lg Large Dropdown
+                              
+                              button.btn.dropdown-toggle.btn-default.btn-lg(data-toggle='dropdown')
+                                 span.caret
+                              
+                              ul.dropdown-menu
+                                 li
+                                    a(href='#')
+                                       i.glyphicon.glyphicon-star
+                                       |  Action
+                                 
+                                 li
+                                    a(href='#')
+                                       i.glyphicon.glyphicon-tag
+                                       |  Another action
+                                 
+                                 li
+                                    a(href='#')
+                                       i.glyphicon.glyphicon-download-alt
+                                       |  Something else here
+                                 
+                                 li.divider
+                                 
+                                 li
+                                    a(href='#')
+                                       i.glyphicon.glyphicon-tint
+                                       |  Separated link
+                  // /span
+                  .box.col-md-4
+                     .box-inner
+                        .box-header.well(data-original-title='')
+                           h2
+                              i.glyphicon.glyphicon-list
+                              |  Weekly Stat
+                           
+                           .box-icon
+                              a.btn.btn-setting.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-cog
+                              
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+                              
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+                        
+                        .box-content
+                           ul.dashboard-list
+                              li
+                                 a(href='#')
+                                    i.glyphicon.glyphicon-arrow-up
+                                    
+                                    span.green 92
+                                    |  New Comments
+                              
+                              li
+                                 a(href='#')
+                                    i.glyphicon.glyphicon-arrow-down
+                                    
+                                    span.red 15
+                                    |  New Registrations
+                              
+                              li
+                                 a(href='#')
+                                    i.glyphicon.glyphicon-minus
+                                    
+                                    span.blue 36
+                                    |  New Articles
+                              
+                              li
+                                 a(href='#')
+                                    i.glyphicon.glyphicon-comment
+                                    
+                                    span.yellow 45
+                                    |  User reviews
+                              
+                              li
+                                 a(href='#')
+                                    i.glyphicon.glyphicon-arrow-up
+                                    
+                                    span.green 112
+                                    |  New Comments
+                              
+                              li
+                                 a(href='#')
+                                    i.glyphicon.glyphicon-arrow-down
+                                    
+                                    span.red 31
+                                    |  New Registrations
+                              
+                              li
+                                 a(href='#')
+                                    i.glyphicon.glyphicon-minus
+                                    
+                                    span.blue 93
+                                    |  New Articles
+                              
+                              li
+                                 a(href='#')
+                                    i.glyphicon.glyphicon-comment
+                                    
+                                    span.yellow 254
+                                    |  User reviews
+                  // /span
+               // /row
+               // content ends
+            // /#content.col-md-0
+         // /fluid-row
+         // Ad, you can remove it
+         .row
+            .col-md-2.col-lg-3.col-sm-12.col-xs-12.email-subscription-footer
+               .mc_embed_signup
+                  form#mc-embedded-subscribe-form.validate(action='//halalit.us3.list-manage.com/subscribe/post?u=444b176aa3c39f656c66381f6&id=eeb0c04e84', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='')
+                     div
+                        label Keep up with my work
+                        
+                        input.email(type='email', value='', name='EMAIL', placeholder='Email address', required='')
+                        
+                        .power_field
+                           input(type='text', name='b_444b176aa3c39f656c66381f6_eeb0c04e84', tabindex='-1', value='')
+                        
+                        .clear
+                           input.button(type='submit', value='Subscribe', name='subscribe')
+               // End mc_embed_signup
+         // Ad ends
+         hr
+         
+         #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+            .modal-dialog
+               .modal-content
+                  .modal-header
+                     button.close(type='button', data-dismiss='modal') &times;
+                     
+                     h3 Settings
+                  
+                  .modal-body
+                     p Here settings can be configured...
+                  
+                  .modal-footer
+                     a.btn.btn-default(href='#', data-dismiss='modal') Close
+                     
+                     a.btn.btn-primary(href='#', data-dismiss='modal') Save changes
+         
+         footer.row
+            p.col-md-9.col-sm-9.col-xs-12.copyright
+               &copy;
+               a(href='http://usman.it', target='_blank')    Muhammad Usman
+               |  2012 - 2015
+            
+            p.col-md-3.col-sm-3.col-xs-12.powered-by
+               | Powered by:
+               a(href='http://usman.it/free-responsive-admin-template')    Charisma
+      // /.fluid-container
+      // external javascript
+      script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
+      // library for cookie management
+      script(src='js/jquery.cookie.js')
+      // calender plugin
+      script(src='bower_components/moment/min/moment.min.js')
+      script(src='bower_components/fullcalendar/dist/fullcalendar.min.js')
+      // data table plugin
+      script(src='js/jquery.dataTables.min.js')
+      // select or dropdown enhancer
+      script(src='bower_components/chosen/chosen.jquery.min.js')
+      // plugin for gallery image view
+      script(src='bower_components/colorbox/jquery.colorbox-min.js')
+      // notification plugin
+      script(src='js/jquery.noty.js')
+      // library for making tables responsive
+      script(src='bower_components/responsive-tables/responsive-tables.js')
+      // tour plugin
+      script(src='bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js')
+      // star rating plugin
+      script(src='js/jquery.raty.min.js')
+      // for iOS style toggle switch
+      script(src='js/jquery.iphone.toggle.js')
+      // autogrowing textarea plugin
+      script(src='js/jquery.autogrow-textarea.js')
+      // multiple file upload plugin
+      script(src='js/jquery.uploadify-3.1.min.js')
+      // history.js for cross-browser state change on ajax
+      script(src='js/jquery.history.js')
+      // application script for Charisma demo
+      script(src='js/charisma.js')
