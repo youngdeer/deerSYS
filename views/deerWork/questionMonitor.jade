@@ -1,0 +1,663 @@
+//
+   Created by youngdeer on 2016/10/18.
+doctype html
+html
+   head
+      //
+        ===
+        This comment should NOT be removed.
+        Charisma v2.0.0
+        Copyright 2012-2014 Muhammad Usman
+        Licensed under the Apache License v2.0
+        http://www.apache.org/licenses/LICENSE-2.0
+        http://usman.it
+        http://twitter.com/halalit_usman
+        ===
+      meta(charset='utf-8')
+      title Free HTML5 Bootstrap Admin Template
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      meta(name='description', content='Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.')
+      meta(name='author', content='Muhammad Usman')
+      // The styles
+      link(href='/css/bootstrap-cerulean.min.css', rel='stylesheet')
+      link(href='/css/charisma-app.css', rel='stylesheet')
+      link(href='/bower_components/fullcalendar/dist/fullcalendar.css', rel='stylesheet')
+      link(href='/bower_components/fullcalendar/dist/fullcalendar.print.css', rel='stylesheet', media='print')
+      link(href='/bower_components/chosen/chosen.min.css', rel='stylesheet')
+      link(href='/bower_components/colorbox/example3/colorbox.css', rel='stylesheet')
+      link(href='/bower_components/responsive-tables/responsive-tables.css', rel='stylesheet')
+      link(href='/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css', rel='stylesheet')
+      link(href='/css/jquery.noty.css', rel='stylesheet')
+      link(href='/css/noty_theme_default.css', rel='stylesheet')
+      link(href='/css/elfinder.min.css', rel='stylesheet')
+      link(href='/css/elfinder.theme.css', rel='stylesheet')
+      link(href='/css/jquery.iphone.toggle.css', rel='stylesheet')
+      link(href='/css/uploadify.css', rel='stylesheet')
+      link(href='/css/animate.min.css', rel='stylesheet')
+      // jQuery
+      script(src='/bower_components/jquery/jquery.min.js')
+      // The HTML5 shim, for IE6-8 support of HTML5 elements
+      //if lt IE 9
+        script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+      // The fav icon
+      link(rel='shortcut icon', href='/img/favicon.ico')
+   body
+      // topbar starts
+      .navbar.navbar-default(role='navigation')
+         .navbar-inner
+            button.navbar-toggle.pull-left.animated.flip(type='button')
+               span.sr-only Toggle navigation
+               span.icon-bar
+               span.icon-bar
+               span.icon-bar
+            a.navbar-brand(href='index.html')
+               img.hidden-xs(alt='Charisma Logo', src='/img/logo20.png')
+               span DeerWork
+            // user dropdown starts
+            .btn-group.pull-right
+               button.btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+                  i.glyphicon.glyphicon-user
+                  span.hidden-sm.hidden-xs  admin
+                  
+                  span.caret
+               
+               ul.dropdown-menu
+                  li
+                     a(href='#') Profile
+                  
+                  li.divider
+                  
+                  li
+                     a(href='login.html') Logout
+            // user dropdown ends
+            // theme selector starts
+            .btn-group.pull-right.theme-container.animated.tada
+               button.btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+                  i.glyphicon.glyphicon-tint
+                  span.hidden-sm.hidden-xs  Change Theme / Skin
+                  
+                  span.caret
+               
+               ul#themes.dropdown-menu
+                  li
+                     a(data-value='classic', href='#')
+                        i.whitespace
+                        |  Classic
+                  
+                  li
+                     a(data-value='cerulean', href='#')
+                        i.whitespace
+                        |  Cerulean
+                  
+                  li
+                     a(data-value='cyborg', href='#')
+                        i.whitespace
+                        |  Cyborg
+                  
+                  li
+                     a(data-value='simplex', href='#')
+                        i.whitespace
+                          Simplex
+                  
+                  li
+                     a(data-value='darkly', href='#')
+                        i.whitespace
+                        |  Darkly
+                  
+                  li
+                     a(data-value='lumen', href='#')
+                        i.whitespace
+                        |  Lumen
+                  
+                  li
+                     a(data-value='slate', href='#')
+                        i.whitespace
+                        |  Slate
+                  
+                  li
+                     a(data-value='spacelab', href='#')
+                        i.whitespace
+                        |  Spacelab
+                  
+                  li
+                     a(data-value='united', href='#')
+                        i.whitespace
+                        |  United
+            // theme selector ends
+            ul.collapse.navbar-collapse.nav.navbar-nav.top-menu
+               li
+                  a(href='#')
+                     i.glyphicon.glyphicon-globe
+                     |  Visit Site
+               
+               li.dropdown
+                  a(href='#', data-toggle='dropdown')
+                     i.glyphicon.glyphicon-star
+                     |  Dropdown
+                     span.caret
+                  
+                  ul.dropdown-menu(role='menu')
+                     li
+                        a(href='#') Action
+                     
+                     li
+                        a(href='#') Another action
+                     
+                     li
+                        a(href='#') Something else here
+                     
+                     li.divider
+                     
+                     li
+                        a(href='#') Separated link
+                     
+                     li.divider
+                     
+                     li
+                        a(href='#') One more separated link
+               
+               li
+                  form.navbar-search.pull-left
+                     input.search-query.form-control.col-md-10(placeholder='Search', name='query', type='text')
+      // topbar ends
+      .ch-container
+         .row
+            // left menu starts
+            .col-sm-2.col-lg-2
+               .sidebar-nav
+                  .nav-canvas
+                     .nav-sm.nav.nav-stacked
+                     
+                     ul.nav.nav-pills.nav-stacked.main-menu
+                        li.nav-header Main
+                        
+                        li
+                           a.ajax-link(href='/DeerWork')
+                              i.glyphicon.glyphicon-home
+                              span  MainPage
+                        
+                        li
+                           a.ajax-link(href='ui.html')
+                              i.glyphicon.glyphicon-eye-open
+                              span  UI Features
+                        
+                        li
+                           a.ajax-link(href='/DeerWork/questionMonitor')
+                              i.glyphicon.glyphicon-edit
+                              span  question monitor
+                        
+                        li
+                           a.ajax-link(href='chart.html')
+                              i.glyphicon.glyphicon-list-alt
+                              span  Charts
+                        
+                        li
+                           a.ajax-link(href='typography.html')
+                              i.glyphicon.glyphicon-font
+                              span  Typography
+                        
+                        li
+                           a.ajax-link(href='gallery.html')
+                              i.glyphicon.glyphicon-picture
+                              span  Gallery
+                        
+                        li.nav-header.hidden-md Sample Section
+                        
+                        li
+                           a.ajax-link(href='table.html')
+                              i.glyphicon.glyphicon-align-justify
+                              span  Tables
+                        
+                        li.accordion
+                           a(href='#')
+                              i.glyphicon.glyphicon-plus
+                              span  Accordion Menu
+                           
+                           ul.nav.nav-pills.nav-stacked
+                              li
+                                 a(href='#') Child Menu 1
+                              
+                              li
+                                 a(href='#') Child Menu 2
+                        
+                        li
+                           a.ajax-link(href='calendar.html')
+                              i.glyphicon.glyphicon-calendar
+                              span  Calendar
+                        
+                        li
+                           a.ajax-link(href='grid.html')
+                              i.glyphicon.glyphicon-th
+                              span  Grid
+                        
+                        li
+                           a(href='tour.html')
+                              i.glyphicon.glyphicon-globe
+                              span  Tour
+                        
+                        li
+                           a.ajax-link(href='icon.html')
+                              i.glyphicon.glyphicon-star
+                              span  Icons
+                        
+                        li
+                           a(href='error.html')
+                              i.glyphicon.glyphicon-ban-circle
+                              span  Error Page
+                        
+                        li
+                           a(href='login.html')
+                              i.glyphicon.glyphicon-lock
+                              span  Login Page
+                     
+                     label#for-is-ajax(for='is-ajax')
+                        input#is-ajax(type='checkbox')
+                        |  Ajax on menu
+            // /span
+            // left menu ends
+            noscript
+               .alert.alert-block.col-md-12
+                  h4.alert-heading Warning!
+                  
+                  p
+                     |  You need to have
+                     a(href='http://en.wikipedia.org/wiki/JavaScript', target='_blank') JavaScript
+                     |  enabled to use this site.
+            
+            #content.col-lg-10.col-sm-10
+               // content starts
+               div
+                  ul.breadcrumb
+                     li
+                        a(href='#') Home
+                     
+                     li
+                        a(href='#') Forms
+               .row
+                  .box.col-md-12
+                     .box-inner
+                        .box-header.well(data-original-title='')
+                           h2
+                              i.glyphicon.glyphicon-edit
+                              |  Question Edit
+
+                           .box-icon
+                              a.btn.btn-setting.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-cog
+
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+
+                        .box-content
+                           .form-group.col-md-4
+                              label.control-label(for='module') 所属模块
+
+                              input#module.form-control(type='text')
+
+                           .form-group.col-md-4
+                              label.control-label(for='simpleDesc') 简要描述
+
+                              input#simpleDesc.form-control(type='text')
+
+                           .form-group.col-md-4
+                              label.control-label(for='mark') 备注
+
+                              input#mark.form-control(type='text')
+
+                           .form-group
+                              label(for='description') 详细描述
+
+                              textarea#description.form-control.autogrow(type='text')
+
+                           form.form-inline(role='form')
+                              .form-group
+                                 label.control-label(for='startTime') 发现时间：
+
+                                 input#startTime.form-control(type='text')
+
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                                 label.control-label(for='dealTime') 预计处理时限：
+
+                                 input#dealTime.form-control(type='text')
+
+                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                                 label.control-label(for='priority') 优先级：
+                                 select#priority(data-rel='chosen')
+                                    option 一般
+                                    option 重要
+                                    option 紧急
+
+
+
+               .row
+                  .box.col-md-12
+                     .box-inner
+                        .box-header.well(data-original-title='')
+                           h2
+                              i.glyphicon.glyphicon-edit
+                              |  Form Elements
+
+                           .box-icon
+                              a.btn.btn-setting.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-cog
+
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+
+                        .box-content
+                           .control-group
+                              label.control-label(for='selectError') Modern Select
+
+                              .controls
+                                 select#selectError(data-rel='chosen')
+                                    option Option 1
+
+                                    option Option 2
+
+                                    option Option 3
+
+                                    option Option 4
+
+                                    option Option 5
+
+                           .control-group
+                              label.control-label(for='selectError1') Multiple Select / Tags
+
+                              .controls
+                                 select#selectError1.form-control(multiple='', data-rel='chosen')
+                                    option Option 1
+
+                                    option(selected='') Option 2
+
+                                    option Option 3
+
+                                    option Option 4
+
+                                    option Option 5
+
+                           .control-group
+                              label.control-label(for='selectError2') Group Select
+
+                              .controls
+                                 select#selectError2(data-placeholder='Your Favorite Football Team', data-rel='chosen')
+                                    option(value='')
+
+                                    optgroup(label='NFC EAST')
+                                       option Dallas Cowboys
+
+                                       option New York Giants
+
+                                       option Philadelphia Eagles
+
+                                       option Washington Redskins
+
+                                    optgroup(label='NFC NORTH')
+                                       option Chicago Bears
+
+                                       option Detroit Lions
+
+                                       option Green Bay Packers
+
+                                       option Minnesota Vikings
+
+                                    optgroup(label='NFC SOUTH')
+                                       option Atlanta Falcons
+
+                                       option Carolina Panthers
+
+                                       option New Orleans Saints
+
+                                       option Tampa Bay Buccaneers
+
+                                    optgroup(label='NFC WEST')
+                                       option Arizona Cardinals
+
+                                       option St. Louis Rams
+
+                                       option San Francisco 49ers
+
+                                       option Seattle Seahawks
+
+                                    optgroup(label='AFC EAST')
+                                       option Buffalo Bills
+
+                                       option Miami Dolphins
+
+                                       option New England Patriots
+
+                                       option New York Jets
+
+                                    optgroup(label='AFC NORTH')
+                                       option Baltimore Ravens
+
+                                       option Cincinnati Bengals
+
+                                       option Cleveland Browns
+
+                                       option Pittsburgh Steelers
+
+                                    optgroup(label='AFC SOUTH')
+                                       option Houston Texans
+
+                                       option Indianapolis Colts
+
+                                       option Jacksonville Jaguars
+
+                                       option Tennessee Titans
+
+                                    optgroup(label='AFC WEST')
+                                       option Denver Broncos
+
+                                       option Kansas City Chiefs
+
+                                       option Oakland Raiders
+
+                                       option San Diego Chargers
+
+                           br
+
+                           .checkbox
+                              label
+                                 input(type='checkbox', value='')
+                                 |  Option one is this and that&mdash;be sure to include why it&apos;s great
+
+                           .checkbox.disabled
+                              label
+                                 input(type='checkbox', value='', disabled='')
+                                 |  Option two is disabled
+
+                           .radio
+                              label
+                                 input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
+                                 |  Option one is this and that&mdash;be sure to include why it&apos;s great
+
+                           .radio
+                              label
+                                 input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
+                                 |  Option two can be something else and selecting it will deselect option one
+
+                           .radio.disabled
+                              label
+                                 input#optionsRadios3(type='radio', name='optionsRadios', value='option3', disabled='')
+                                 |  Option three is disabled
+
+                           label.checkbox-inline
+                              input#inlineCheckbox1(type='checkbox', value='option1')
+                              |  1
+
+                           label.checkbox-inline
+                              input#inlineCheckbox2(type='checkbox', value='option2')
+                              |  2
+
+                           label.checkbox-inline
+                              input#inlineCheckbox3(type='checkbox', value='option3')
+                              |  3
+
+                           label.radio-inline
+                              input#inlineRadio1(type='radio', name='inlineRadioOptions', value='option1')
+                              |  1
+
+                           label.radio-inline
+                              input#inlineRadio2(type='radio', name='inlineRadioOptions', value='option2')
+                              |  2
+
+                           label.radio-inline
+                              input#inlineRadio3(type='radio', name='inlineRadioOptions', value='option3')
+                              |  3
+
+                           br
+
+                           br
+
+                           br
+
+                           .form-group.has-success.col-md-4
+                              label.control-label(for='inputSuccess1') Input with success
+
+                              input#inputSuccess1.form-control(type='text')
+
+                           .form-group.has-warning.col-md-4
+                              label.control-label(for='inputWarning1') Input with warning
+
+                              input#inputWarning1.form-control(type='text')
+
+                           .form-group.has-error.col-md-4
+                              label.control-label(for='inputError1') Input with error
+
+                              input#inputError1.form-control(type='text')
+
+                           form.form-inline(role='form')
+                              .form-group.has-success.has-feedback
+                                 label.control-label(for='inputSuccess4') Input with success
+
+                                 input#inputSuccess4.form-control(type='text')
+
+                                 span.glyphicon.glyphicon-ok.form-control-feedback
+
+                           br
+
+                           .input-group.col-md-4
+                              span.input-group-addon
+                                 i.glyphicon.glyphicon-user.red
+
+                              input.form-control(type='text', placeholder='Username')
+                  // /span
+               // /row
+               .row
+                  .box.col-md-12
+                     .box-inner
+                        .box-header.well(data-original-title='')
+                           h2
+                              i.glyphicon.glyphicon-edit
+                              |  Form Elements
+                           
+                           .box-icon
+                              a.btn.btn-setting.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-cog
+                              
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+                              
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+                        
+                        .box-content
+                           form(role='form')
+                              .form-group
+                                 label(for='exampleInputEmail1') Email address
+                                 
+                                 input#exampleInputEmail1.form-control(type='email', placeholder='Enter email')
+                              
+                              .form-group
+                                 label(for='exampleInputPassword1') Password
+                                 
+                                 input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+                              
+                              .form-group
+                                 label(for='exampleInputFile') File input
+                                 
+                                 input#exampleInputFile(type='file')
+                                 
+                                 p.help-block Example block-level help text here.
+                              
+                              .checkbox
+                                 label
+                                    input(type='checkbox')
+                                    |  Check me out
+                              
+                              button.btn.btn-default(type='submit') Submit
+                  // /span
+               // /row
+               // content ends
+            // /#content.col-md-0
+         // /fluid-row
+
+         hr
+         
+         #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+            .modal-dialog
+               .modal-content
+                  .modal-header
+                     button.close(type='button', data-dismiss='modal') &times;
+                     
+                     h3 Settings
+                  
+                  .modal-body
+                     p Here settings can be configured...
+                  
+                  .modal-footer
+                     a.btn.btn-default(href='#', data-dismiss='modal') Close
+                     
+                     a.btn.btn-primary(href='#', data-dismiss='modal') Save changes
+         
+         footer.row
+            p.col-md-9.col-sm-9.col-xs-12.copyright
+               &copy;
+               a(href='http://usman.it', target='_blank')   Muhammad Usman
+               |  2012 - 2015
+
+            p.col-md-3.col-sm-3.col-xs-12.powered-by
+               |  Powered by:
+               a(href='http://usman.it/free-responsive-admin-template')    Charisma
+      // /.fluid-container
+      // external javascript
+      script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+      // library for cookie management
+      script(src='/js/jquery.cookie.js')
+      // calender plugin
+      script(src='/bower_components/moment/min/moment.min.js')
+      script(src='/bower_components/fullcalendar/dist/fullcalendar.min.js')
+      // data table plugin
+      script(src='/js/jquery.dataTables.min.js')
+      // select or dropdown enhancer
+      script(src='/bower_components/chosen/chosen.jquery.min.js')
+      // plugin for gallery image view
+      script(src='/bower_components/colorbox/jquery.colorbox-min.js')
+      // notification plugin
+      script(src='/js/jquery.noty.js')
+      // library for making tables responsive
+      script(src='/bower_components/responsive-tables/responsive-tables.js')
+      // tour plugin
+      script(src='/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js')
+      // star rating plugin
+      script(src='/js/jquery.raty.min.js')
+      // for iOS style toggle switch
+      script(src='/js/jquery.iphone.toggle.js')
+      // autogrowing textarea plugin
+      script(src='/js/jquery.autogrow-textarea.js')
+      // multiple file upload plugin
+      script(src='/js/jquery.uploadify-3.1.min.js')
+      // history.js for cross-browser state change on ajax
+      script(src='/js/jquery.history.js')
+      // application script for Charisma demo
+      script(src='/js/charisma.js')
+
+

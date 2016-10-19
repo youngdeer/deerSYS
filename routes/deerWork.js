@@ -10,10 +10,18 @@ var router = express.Router();
 
 router.get('/', checkLogin);
 router.get('/', function(req,res,next){
-    res.render('deerWork_index', {
-        title: 'deer work'
+    res.render('deerWork/deerWork_index', {
+
     });
 });
+
+router.get('/questionMonitor', checkLogin);
+router.get('/questionMonitor', function(req,res,next){
+    res.render('deerWork/questionMonitor', {
+
+    });
+});
+
 
 
 function checkLogin(req,res,next){
