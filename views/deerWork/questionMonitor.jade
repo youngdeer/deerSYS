@@ -273,64 +273,68 @@ html
                      
                      li
                         a(href='#') Forms
-               .row
-                  .box.col-md-12
-                     .box-inner
-                        .box-header.well(data-original-title='')
-                           h2
-                              i.glyphicon.glyphicon-edit
-                              |  Question Edit
+               form#QmForm
+                  .row
+                     .box.col-md-12
+                        .box-inner
+                           .box-header.well(data-original-title='')
+                              h2
+                                 i.glyphicon.glyphicon-edit
+                                 |  Question Edit
 
-                           .box-icon
-                              a.btn.btn-setting.btn-round.btn-default(href='#')
-                                 i.glyphicon.glyphicon-cog
+                              .box-icon
+                                 a.btn.btn-setting.btn-round.btn-default(href='#')
+                                    i.glyphicon.glyphicon-cog
 
-                              a.btn.btn-minimize.btn-round.btn-default(href='#')
-                                 i.glyphicon.glyphicon-chevron-up
+                                 a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                    i.glyphicon.glyphicon-chevron-up
 
-                              a.btn.btn-close.btn-round.btn-default(href='#')
-                                 i.glyphicon.glyphicon-remove
+                                 a.btn.btn-close.btn-round.btn-default(href='#')
+                                    i.glyphicon.glyphicon-remove
 
-                        .box-content
-                           .form-group.col-md-4
-                              label.control-label(for='module') 所属模块
+                           .box-content
+                              .form-group.col-md-4
+                                 label.control-label(for='module') 所属模块
 
-                              input#module.form-control(type='text')
+                                 input#module.form-control(type='text' name='module')
 
-                           .form-group.col-md-4
-                              label.control-label(for='simpleDesc') 简要描述
+                              .form-group.col-md-4
+                                 label.control-label(for='simpleDesc') 简要描述
 
-                              input#simpleDesc.form-control(type='text')
+                                 input#simpleDesc.form-control(type='text' name='simpleDesc')
 
-                           .form-group.col-md-4
-                              label.control-label(for='mark') 备注
+                              .form-group.col-md-4
+                                 label.control-label(for='priority ') 优先级
 
-                              input#mark.form-control(type='text')
+                                 select.selectpicker.form-control#priority(name='priority')
+                                    option(value = '01') 一般
+                                    option(value = '02') 重大
+                                    option(value = '03') 紧急
 
-                           .form-group
-                              label(for='description') 详细描述
+                              .form-group.col-md-4
+                                 label.control-label(for='startTime') 发现时间
 
-                              textarea#description.form-control.autogrow(type='text')
+                                 input#startTime.form-control(type='text' name='startTime')
 
-                           form.form-inline(role='form')
+                              .form-group.col-md-4
+                                 label.control-label(for='dealTime') 预计处理时限
+
+                                 input#dealTime.form-control(type='text' name='dealTime')
+
+                              .form-group.col-md-4
+                                 label.control-label(for='mark') 备注
+
+                                 input#mark.form-control(type='text' name='mark')
+
                               .form-group
-                                 label.control-label(for='startTime') 发现时间：
+                                 label(for='description') 详细描述
 
-                                 input#startTime.form-control(type='text')
+                                 textarea#description.form-control(type='text' rows='3' name='description')
 
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              .form-group
+                                 button.btn.btn-primary.btn-sm(type='button' onclick='saveQm()') 保存记录
 
-                                 label.control-label(for='dealTime') 预计处理时限：
 
-                                 input#dealTime.form-control(type='text')
-
-                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
-                                 label.control-label(for='priority') 优先级：
-                                 select#priority(data-rel='chosen')
-                                    option 一般
-                                    option 重要
-                                    option 紧急
 
 
 
@@ -659,5 +663,8 @@ html
       script(src='/js/jquery.history.js')
       // application script for Charisma demo
       script(src='/js/charisma.js')
+
+      //页面js
+      script(src='/javascripts/deerWork/questionMonitor.js')
 
 
