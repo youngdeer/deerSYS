@@ -204,7 +204,7 @@ html
                         li.nav-header.hidden-md Sample Section
                         
                         li
-                           a.ajax-link(href='table.html')
+                           a.ajax-link(href='/DeerWork/table')
                               i.glyphicon.glyphicon-align-justify
                               span  Tables
                         
@@ -337,6 +337,126 @@ html
 
 
 
+               .row
+                  .box.col-md-12
+                     .box-inner
+                        .box-header.well(data-original-title='')
+                           h2
+                              i.glyphicon.glyphicon-user
+                              |  Question List
+
+                           .box-icon
+                              a.btn.btn-setting.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-cog
+
+                              a.btn.btn-minimize.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-chevron-up
+
+                              a.btn.btn-close.btn-round.btn-default(href='#')
+                                 i.glyphicon.glyphicon-remove
+
+                        .box-content
+                           .alert.alert-info
+                              |  For help with such table please check
+                              a(href='http://datatables.net/', target='_blank') http://datatables.net/
+
+                           table.table.table-striped.table-bordered.bootstrap-datatable.datatable.responsive
+                              thead
+                                 tr
+                                    th Username
+
+                                    th Date registered
+
+                                    th Role
+
+                                    th Status
+
+                                    th Actions
+
+                              tbody
+                                 -for (var i = 0; i < questionMonitors.length; i++)
+                                    tr
+                                       td=questionMonitors[i].module
+                                       td=questionMonitors[i].module
+                                       td=questionMonitors[i].module
+                                       td=questionMonitors[i].module
+                                       td=questionMonitors[i].module
+                                 tr
+                                    td David R
+
+                                    td.center 2012/01/01
+
+                                    td.center Member
+
+                                    td.center
+                                       span.label-success.label.label-default Active
+
+                                    td.center
+                                       a.btn.btn-success(href='#')
+                                          i.glyphicon.glyphicon-zoom-in.icon-white
+                                          |  View
+                                       |&nbsp
+
+                                       a.btn.btn-info(href='#')
+                                          i.glyphicon.glyphicon-edit.icon-white
+                                          |  Edit
+                                       |&nbsp
+
+                                       a.btn.btn-danger(href='#')
+                                          i.glyphicon.glyphicon-trash.icon-white
+                                          |  Delete
+
+                                 tr
+                                    td Chris Jack
+
+                                    td.center 2012/01/01
+
+                                    td.center Member
+
+                                    td.center
+                                       span.label-success.label.label-default Active
+
+                                    td.center
+                                       a.btn.btn-success(href='#')
+                                          i.glyphicon.glyphicon-zoom-in.icon-white
+                                          |  View
+                                       |&nbsp
+
+                                       a.btn.btn-info(href='#')
+                                          i.glyphicon.glyphicon-edit.icon-white
+                                          |  Edit
+                                       |&nbsp
+
+                                       a.btn.btn-danger(href='#')
+                                          i.glyphicon.glyphicon-trash.icon-white
+                                          |  Delete
+
+                                 tr
+                                    td Jack Chris
+
+                                    td.center 2012/01/01
+
+                                    td.center Member
+
+                                    td.center
+                                       span.label-success.label.label-default Active
+
+                                    td.center
+                                       a.btn.btn-success(href='#')
+                                          i.glyphicon.glyphicon-zoom-in.icon-white
+                                          |  View
+                                       |&nbsp
+
+                                       a.btn.btn-info(href='#')
+                                          i.glyphicon.glyphicon-edit.icon-white
+                                          |  Edit
+                                       |&nbsp
+
+                                       a.btn.btn-danger(href='#')
+                                          i.glyphicon.glyphicon-trash.icon-white
+                                          |  Delete
+                                 // /span
+                                 // /row
 
                .row
                   .box.col-md-12
@@ -624,7 +744,7 @@ html
          
          footer.row
             p.col-md-9.col-sm-9.col-xs-12.copyright
-               &copy;
+               |&copy;
                a(href='http://usman.it', target='_blank')   Muhammad Usman
                |  2012 - 2015
 

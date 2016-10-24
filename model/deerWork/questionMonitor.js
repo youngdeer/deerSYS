@@ -77,3 +77,34 @@ QuestionMonitor.prototype.save = function save(callback){
         .then(saveSuccess)
         .catch(saveFail);
 }
+
+
+QuestionMonitor.get = function get(username,callback){
+    mongodb.open(function(err,db){
+        if(err){
+            return callback(err);
+        }
+        db.collection('questionMonitor',function(err,collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            var query = {};
+            if(username){
+                query.username = username;
+            }
+            collection.find(query).sort({time:-1}).toArray(function(err,docs){
+                mongodb.close();
+                if(err){
+                    return callback(err);
+                }
+                var questionMonitors = [];
+                docs.forEach(function(doc,index){
+                    var questionMonitor = new QuestionMonitor(doc.username,doc.module,doc.simpleDesc,doc.priority,doc.startTime,doc.dealTime,doc.mark,doc.description,doc.status,doc._id);
+                    questionMonitors.push(questionMonitor);
+                });
+                callback(null,questionMonitors);
+            });
+        });
+    });
+}

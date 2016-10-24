@@ -21,7 +21,15 @@ router.get('/', function(req,res,next){
 
 router.get('/questionMonitor', checkLogin);
 router.get('/questionMonitor', function(req,res,next){
-    res.render('deerWork/questionMonitor', {
+    var user = req.session.user;
+    QuestionMonitor.get(user.name,function(err,questionMonitors){
+        if(err){
+            questionMonitors = [];
+        }
+        //console.log(questionMonitors);
+        res.render('deerWork/questionMonitor',{
+            questionMonitors: questionMonitors
+        });
 
     });
 });
@@ -47,6 +55,13 @@ router.post('/saveQm', function(req,res){
         });
 });
 
+
+router.get('/table', checkLogin);
+router.get('/table', function(req,res,next){
+    res.render('deerWork/table', {
+
+    });
+});
 
 
 
