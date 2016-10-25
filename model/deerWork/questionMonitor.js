@@ -26,7 +26,7 @@ function QuestionMonitor(username,module,simpleDesc,priority,startTime,dealTime,
     if(status){
         this.status = status;
     }else{
-        this.status = 'issue';
+        this.status = 'Issue';
     }
 
     if(startTime){
@@ -47,6 +47,7 @@ QuestionMonitor.prototype.save = function save(callback){
         startTime: this.startTime,
         dealTime: this.dealTime,
         mark: this.mark,
+        description: this.description,
         status: this.status,
     }
 
@@ -79,7 +80,7 @@ QuestionMonitor.prototype.save = function save(callback){
 }
 
 
-QuestionMonitor.get = function get(username,callback){
+QuestionMonitor.getList = function getList(username,callback){
     mongodb.open(function(err,db){
         if(err){
             return callback(err);
@@ -100,6 +101,37 @@ QuestionMonitor.get = function get(username,callback){
                 }
                 var questionMonitors = [];
                 docs.forEach(function(doc,index){
+                    var questionMonitor = new QuestionMonitor(doc.username,doc.module,doc.simpleDesc,formatPriority(doc.priority),doc.startTime,doc.dealTime,doc.mark,doc.description,doc.status,doc._id);
+                    questionMonitors.push(questionMonitor);
+                });
+                callback(null,questionMonitors);
+            });
+        });
+    });
+}
+
+QuestionMonitor.getById = function getById(id,callback){
+    mongodb.open(function(err,db){
+        if(err){
+            return callback(err);
+        }
+        db.collection('questionMonitor',function(err,collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            var query = {};
+            var ObjectID = require('mongodb').ObjectID;
+            if(id){
+                query._id = ObjectID(id);
+            }
+            collection.find(query).sort({time:-1}).toArray(function(err,docs){
+                mongodb.close();
+                if(err){
+                    return callback(err);
+                }
+                var questionMonitors = [];
+                docs.forEach(function(doc,index){
                     var questionMonitor = new QuestionMonitor(doc.username,doc.module,doc.simpleDesc,doc.priority,doc.startTime,doc.dealTime,doc.mark,doc.description,doc.status,doc._id);
                     questionMonitors.push(questionMonitor);
                 });
@@ -107,4 +139,17 @@ QuestionMonitor.get = function get(username,callback){
             });
         });
     });
+}
+
+
+function formatPriority(priority){
+    var priorityName  = '';
+    if(priority == '01'){
+        priorityName = '一般';
+    }else if(priority == '02'){
+        priorityName = '重大';
+    }else if(priority == '03'){
+        priorityName = '紧急';
+    }
+    return priorityName;
 }

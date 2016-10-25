@@ -22,7 +22,7 @@ router.get('/', function(req,res,next){
 router.get('/questionMonitor', checkLogin);
 router.get('/questionMonitor', function(req,res,next){
     var user = req.session.user;
-    QuestionMonitor.get(user.name,function(err,questionMonitors){
+    QuestionMonitor.getList(user.name,function(err,questionMonitors){
         if(err){
             questionMonitors = [];
         }
@@ -48,13 +48,26 @@ router.post('/saveQm', function(req,res){
     var questionMonitor = new QuestionMonitor(currentUser.name,module,simpleDesc,priority,startTime,dealTime,mark,description,status);
     questionMonitor.saveAsync()
         .then(function(){
-            res.json({success:1});
+            res.json({success:'保存成功'});
         })
         .catch(function(err){
             return res.json({error:err});
         });
 });
 
+router.post('/getQmById', checkLogin);
+router.post('/getQmById', function(req,res,next){
+    var id = req.body.id
+    QuestionMonitor.getById(id,function(err,questionMonitors){
+        if(err){
+            questionMonitors = [];
+            return res.json({error:err});
+        }
+        //console.log(questionMonitors);
+        res.json({questionMonitors:questionMonitors});
+
+    });
+});
 
 router.get('/table', checkLogin);
 router.get('/table', function(req,res,next){

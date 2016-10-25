@@ -274,6 +274,8 @@ html
                      li
                         a(href='#') Forms
                form#QmForm
+                  input#id(type='hidden' name='id')
+                  input#status(type='hidden' name='status')
                   .row
                      .box.col-md-12
                         .box-inner
@@ -363,98 +365,36 @@ html
                            table.table.table-striped.table-bordered.bootstrap-datatable.datatable.responsive
                               thead
                                  tr
-                                    th Username
-
-                                    th Date registered
-
-                                    th Role
-
-                                    th Status
-
-                                    th Actions
+                                    th 所属模块
+                                    th 简要描述
+                                    th 优先级
+                                    th 状态
+                                    th 预计处理时限
+                                    th 操作
 
                               tbody
                                  -for (var i = 0; i < questionMonitors.length; i++)
                                     tr
                                        td=questionMonitors[i].module
-                                       td=questionMonitors[i].module
-                                       td=questionMonitors[i].module
-                                       td=questionMonitors[i].module
-                                       td=questionMonitors[i].module
-                                 tr
-                                    td David R
+                                       td=questionMonitors[i].simpleDesc
+                                       td=questionMonitors[i].priority
+                                       td
+                                          span.label-success.label.label-default=questionMonitors[i].status
+                                       td=questionMonitors[i].dealTime
+                                       td
+                                          a.btn.btn-success(href='javascript:void(0);' onclick='viewDetail("'+questionMonitors[i].id+'")')
+                                             i.glyphicon.glyphicon-zoom-in.icon-white
+                                             |  查看
+                                          |&nbsp
 
-                                    td.center 2012/01/01
+                                          a.btn.btn-info(href='#')
+                                             i.glyphicon.glyphicon-edit.icon-white
+                                             |  Edit
+                                          |&nbsp
 
-                                    td.center Member
-
-                                    td.center
-                                       span.label-success.label.label-default Active
-
-                                    td.center
-                                       a.btn.btn-success(href='#')
-                                          i.glyphicon.glyphicon-zoom-in.icon-white
-                                          |  View
-                                       |&nbsp
-
-                                       a.btn.btn-info(href='#')
-                                          i.glyphicon.glyphicon-edit.icon-white
-                                          |  Edit
-                                       |&nbsp
-
-                                       a.btn.btn-danger(href='#')
-                                          i.glyphicon.glyphicon-trash.icon-white
-                                          |  Delete
-
-                                 tr
-                                    td Chris Jack
-
-                                    td.center 2012/01/01
-
-                                    td.center Member
-
-                                    td.center
-                                       span.label-success.label.label-default Active
-
-                                    td.center
-                                       a.btn.btn-success(href='#')
-                                          i.glyphicon.glyphicon-zoom-in.icon-white
-                                          |  View
-                                       |&nbsp
-
-                                       a.btn.btn-info(href='#')
-                                          i.glyphicon.glyphicon-edit.icon-white
-                                          |  Edit
-                                       |&nbsp
-
-                                       a.btn.btn-danger(href='#')
-                                          i.glyphicon.glyphicon-trash.icon-white
-                                          |  Delete
-
-                                 tr
-                                    td Jack Chris
-
-                                    td.center 2012/01/01
-
-                                    td.center Member
-
-                                    td.center
-                                       span.label-success.label.label-default Active
-
-                                    td.center
-                                       a.btn.btn-success(href='#')
-                                          i.glyphicon.glyphicon-zoom-in.icon-white
-                                          |  View
-                                       |&nbsp
-
-                                       a.btn.btn-info(href='#')
-                                          i.glyphicon.glyphicon-edit.icon-white
-                                          |  Edit
-                                       |&nbsp
-
-                                       a.btn.btn-danger(href='#')
-                                          i.glyphicon.glyphicon-trash.icon-white
-                                          |  Delete
+                                          a.btn.btn-danger(href='#')
+                                             i.glyphicon.glyphicon-trash.icon-white
+                                             |  Delete
                                  // /span
                                  // /row
 
