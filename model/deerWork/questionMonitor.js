@@ -79,6 +79,41 @@ QuestionMonitor.prototype.save = function save(callback){
         .catch(saveFail);
 }
 
+QuestionMonitor.prototype.update = function save(id,callback){
+    var questionMonitor = {
+        username: this.username,
+        module: this.module,
+        simpleDesc: this.simpleDesc,
+        priority: this.priority,
+        startTime: this.startTime,
+        dealTime: this.dealTime,
+        mark: this.mark,
+        description: this.description,
+        status: this.status,
+    }
+
+    mongodb.open(function(err, db){
+        if(err){
+            return callback(err);
+        }
+        db.collection('questionMonitor', function(err, collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            var query = {};
+            var ObjectID = require('mongodb').ObjectID;
+            if(id){
+                query._id = ObjectID(id);
+            }
+            collection.update(query ,questionMonitor, {safe: true}, function(err, post){
+                mongodb.close();
+                callback(err, post);
+            });
+        });
+    });
+}
+
 
 QuestionMonitor.getList = function getList(username,callback){
     mongodb.open(function(err,db){

@@ -45,19 +45,33 @@ router.post('/saveQm', function(req,res){
     var description = req.body.description;
     var status = req.body.status;
     var currentUser = req.session.user;
+    var id = req.body.id;
     var questionMonitor = new QuestionMonitor(currentUser.name,module,simpleDesc,priority,startTime,dealTime,mark,description,status);
-    questionMonitor.saveAsync()
-        .then(function(){
-            res.json({success:'保存成功'});
-        })
-        .catch(function(err){
-            return res.json({error:err});
-        });
+    if(id){
+        //console.log(id)
+        questionMonitor.updateAsync(id)
+            .then(function(){
+                res.json({success:'更新成功'});
+            })
+            .catch(function(err){
+                console.log(err)
+                return res.json({error:err});
+            });
+    }else{
+        questionMonitor.saveAsync()
+            .then(function(){
+                res.json({success:'保存成功'});
+            })
+            .catch(function(err){
+                return res.json({error:err});
+            });
+    }
+
 });
 
 router.post('/getQmById', checkLogin);
 router.post('/getQmById', function(req,res,next){
-    var id = req.body.id
+    var id = req.body.id;
     QuestionMonitor.getById(id,function(err,questionMonitors){
         if(err){
             questionMonitors = [];
