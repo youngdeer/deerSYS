@@ -54,7 +54,7 @@ router.post('/saveQm', function(req,res){
                 res.json({success:'更新成功'});
             })
             .catch(function(err){
-                console.log(err)
+                //console.log(err)
                 return res.json({error:err});
             });
     }else{
@@ -69,6 +69,18 @@ router.post('/saveQm', function(req,res){
 
 });
 
+router.post('/updateStatus', checkLogin);
+router.post('/updateStatus', function(req,res,next){
+    var id = req.body.id;
+    var status = req.body.status;
+    QuestionMonitor.updateStatus(id,status,function(err){
+        if(err){
+            return res.json({error:err});
+        }
+        res.json({success:'状态更改成功。'});
+    });
+});
+
 router.post('/getQmById', checkLogin);
 router.post('/getQmById', function(req,res,next){
     var id = req.body.id;
@@ -79,6 +91,18 @@ router.post('/getQmById', function(req,res,next){
         }
         //console.log(questionMonitors);
         res.json({questionMonitors:questionMonitors});
+
+    });
+});
+
+router.post('/deleteById', checkLogin);
+router.post('/deleteById', function(req,res,next){
+    var id = req.body.id;
+    QuestionMonitor.delete(id,function(err){
+        if(err){
+            return res.json({error:err});
+        }
+        res.json({success:'删除成功'});
 
     });
 });

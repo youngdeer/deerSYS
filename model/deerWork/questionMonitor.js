@@ -6,6 +6,19 @@ var moment = require('moment');
 var Promise = require("bluebird");
 Promise.promisifyAll(mongodb);
 
+/**
+ * @param username
+ * @param module
+ * @param simpleDesc
+ * @param priority
+ * @param startTime
+ * @param dealTime
+ * @param mark
+ * @param description
+ * @param status ，状态有以下几种Issue，Open, Fixed, Closed, Published, NotProblem
+ * @param id
+ * @constructor
+ */
 function QuestionMonitor(username,module,simpleDesc,priority,startTime,dealTime,mark,description,status,id){
     if(id){
         this.id = id;
@@ -106,9 +119,55 @@ QuestionMonitor.prototype.update = function save(id,callback){
             if(id){
                 query._id = ObjectID(id);
             }
-            collection.update(query ,questionMonitor, {safe: true}, function(err, post){
+            collection.update(query ,questionMonitor, {safe: true}, function(err){
                 mongodb.close();
-                callback(err, post);
+                callback(err);
+            });
+        });
+    });
+}
+
+QuestionMonitor.updateStatus = function(id,status,callback){
+    mongodb.open(function(err, db){
+        if(err){
+            return callback(err);
+        }
+        db.collection('questionMonitor', function(err, collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            var query = {};
+            var ObjectID = require('mongodb').ObjectID;
+            if(id){
+                query._id = ObjectID(id);
+            }
+            collection.update(query ,{$set:{status:status}}, {safe: true}, function(err){
+                mongodb.close();
+                callback(err);
+            });
+        });
+    });
+}
+
+QuestionMonitor.delete = function del(id,callback){
+    mongodb.open(function(err,db){
+        if(err){
+            return callback(err);
+        }
+        db.collection('questionMonitor',function(err,collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            var query = {};
+            var ObjectID = require('mongodb').ObjectID;
+            if(id){
+                query._id = ObjectID(id);
+            }
+            collection.remove(query,{safe:true},function(err){
+                mongodb.close();
+                return callback(err);
             });
         });
     });

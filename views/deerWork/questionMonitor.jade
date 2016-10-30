@@ -358,9 +358,6 @@ html
                                  i.glyphicon.glyphicon-remove
 
                         .box-content
-                           .alert.alert-info
-                              |  For help with such table please check
-                              a(href='http://datatables.net/', target='_blank') http://datatables.net/
 
                            table.table.table-striped.table-bordered.bootstrap-datatable.datatable.responsive
                               thead
@@ -372,14 +369,22 @@ html
                                     th 预计处理时限
                                     th 操作
 
-                              tbody
+                              tbody#questionMonitorList
                                  -for (var i = 0; i < questionMonitors.length; i++)
                                     tr
                                        td=questionMonitors[i].module
                                        td=questionMonitors[i].simpleDesc
                                        td=questionMonitors[i].priority
                                        td
-                                          span.label-success.label.label-default=questionMonitors[i].status
+                                          span#statusShow.label-success.label.label-default=questionMonitors[i].status
+                                          |&nbsp
+                                          select#StatusSelect
+                                             option(value = 'Issue') Issue
+                                             option(value = 'Open') Open
+                                             option(value = 'Fixed') Fixed
+                                             option(value = 'Closed') Closed
+                                             option(value = 'Published') Published
+                                             option(value = 'NotProblem') NotProblem
                                        td=questionMonitors[i].dealTime
                                        td
                                           a.btn.btn-success(href='javascript:void(0);' onclick='viewDetail("'+questionMonitors[i].id+'")')
@@ -387,14 +392,14 @@ html
                                              |  查看
                                           |&nbsp
 
-                                          a.btn.btn-info(href='#')
+                                          a.btn.btn-info(href='javascript:void(0);' onclick='updateStatus("'+questionMonitors[i].id+'",this)')
                                              i.glyphicon.glyphicon-edit.icon-white
-                                             |  Edit
+                                             |  状态保存
                                           |&nbsp
 
-                                          a.btn.btn-danger(href='#')
+                                          a.btn.btn-danger(href='javascript:void(0);' onclick ='deleteQm("'+questionMonitors[i].id+'")')
                                              i.glyphicon.glyphicon-trash.icon-white
-                                             |  Delete
+                                             |  删除
                                  // /span
                                  // /row
 
