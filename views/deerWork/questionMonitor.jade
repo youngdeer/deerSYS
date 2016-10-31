@@ -34,6 +34,8 @@ html
       link(href='/css/jquery.iphone.toggle.css', rel='stylesheet')
       link(href='/css/uploadify.css', rel='stylesheet')
       link(href='/css/animate.min.css', rel='stylesheet')
+      link(rel='stylesheet', href='/stylesheets/bootstrap-datepicker.css')
+      link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.css')
       // jQuery
       script(src='/bower_components/jquery/jquery.min.js')
       // The HTML5 shim, for IE6-8 support of HTML5 elements
@@ -315,13 +317,18 @@ html
 
                               .form-group.col-md-4
                                  label.control-label(for='startTime') 发现时间
-
-                                 input#startTime.form-control(type='text' name='startTime')
+                                 .input-group.date.form_startTime.col-md-5(data-date="" data-date-format="dd MM yyyy" data-link-field="startTime" data-link-format="yyyy-mm-dd")
+                                    input#startTime.form-control(type='text' name='startTime' size='16' readonly)
+                                    span.input-group-addon
+                                       span.glyphicon.glyphicon-calendar
 
                               .form-group.col-md-4
                                  label.control-label(for='dealTime') 预计处理时限
 
-                                 input#dealTime.form-control(type='text' name='dealTime')
+                                 .input-group.date.form_date.col-md-5(data-date="" data-date-format="dd MM yyyy" data-link-field="dealTime" data-link-format="yyyy-mm-dd")
+                                    input#dealTime.form-control(type='text' name='dealTime' size='16' readonly)
+                                    span.input-group-addon
+                                       span.glyphicon.glyphicon-calendar
 
                               .form-group.col-md-4
                                  label.control-label(for='mark') 备注
@@ -331,7 +338,7 @@ html
                               .form-group
                                  label(for='description') 详细描述
 
-                                 textarea#description.form-control(type='text' rows='3' name='description')
+                                 textarea#description.form-control(type='text' rows='4' name='description')
 
                               .form-group
                                  button.btn.btn-primary.btn-sm(type='button' onclick='saveQm()') 保存记录
@@ -731,5 +738,7 @@ html
 
       //页面js
       script(src='/javascripts/deerWork/questionMonitor.js')
+      script(src="/javascripts/bootstrap-datepicker.js")
+      script(src="/javascripts/bootstrap-datetimepicker.js")
 
 
