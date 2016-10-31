@@ -14,9 +14,9 @@ html
         http://twitter.com/halalit_usman
         ===
       meta(charset='utf-8')
-      title Free HTML5 Bootstrap Admin Template
+      title #{title}-deerWork
       meta(name='viewport', content='width=device-width, initial-scale=1')
-      meta(name='description', content='Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.')
+      meta(name='description', content='DeerSys, my DeerWork System.')
       meta(name='author', content='Muhammad Usman')
       // The styles
       link(href='/css/bootstrap-cerulean.min.css', rel='stylesheet')
@@ -271,10 +271,10 @@ html
                div
                   ul.breadcrumb
                      li
-                        a(href='#') Home
+                        a(href='/') Home
                      
                      li
-                        a(href='#') Forms
+                        a(href='/DeerWork/questionMonitor') question monitor
                form#QmForm
                   input#id(type='hidden' name='id')
                   input#status(type='hidden' name='status')
@@ -389,8 +389,8 @@ html
                                              option(value = 'Issue') Issue
                                              option(value = 'Open') Open
                                              option(value = 'Fixed') Fixed
-                                             option(value = 'Closed') Closed
                                              option(value = 'Published') Published
+                                             option(value = 'Closed') Closed
                                              option(value = 'NotProblem') NotProblem
                                        td=questionMonitors[i].dealTime
                                        td

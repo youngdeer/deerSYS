@@ -15,7 +15,7 @@ Promise.promisifyAll(QuestionMonitor.prototype);
 router.get('/', checkLogin);
 router.get('/', function(req,res,next){
     res.render('deerWork/deerWork_index', {
-
+        title: 'MainPage',
     });
 });
 
@@ -28,6 +28,7 @@ router.get('/questionMonitor', function(req,res,next){
         }
         //console.log(questionMonitors);
         res.render('deerWork/questionMonitor',{
+            title: 'questionMonitor',
             questionMonitors: questionMonitors
         });
 
