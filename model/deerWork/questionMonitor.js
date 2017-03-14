@@ -15,7 +15,7 @@ Promise.promisifyAll(mongodb);
  * @param dealTime
  * @param mark
  * @param description
- * @param status ，状态有以下几种Issue，Open, Fixed, Closed, Published, NotProblem
+ * @param status ，状态有以下几种Issue，Open, Fixed, Closed, Published, NotProblem, ReOpen
  * @param id
  * @constructor
  */

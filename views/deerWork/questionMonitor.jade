@@ -316,6 +316,11 @@ html
                                     option(value = '03') 紧急
 
                               .form-group.col-md-4
+                                 label.control-label(for='mark') 备注
+
+                                 input#mark.form-control(type='text' name='mark')
+
+                              .form-group.col-md-4
                                  label.control-label(for='startTime') 发现时间
                                  .input-group.date.form_startTime.col-md-5(data-date="" data-date-format="dd MM yyyy" data-link-field="startTime" data-link-format="yyyy-mm-dd")
                                     input#startTime.form-control(type='text' name='startTime' size='16' readonly)
@@ -330,10 +335,7 @@ html
                                     span.input-group-addon
                                        span.glyphicon.glyphicon-calendar
 
-                              .form-group.col-md-4
-                                 label.control-label(for='mark') 备注
 
-                                 input#mark.form-control(type='text' name='mark')
 
                               .form-group
                                  label(for='description') 详细描述
@@ -392,6 +394,7 @@ html
                                              option(value = 'Published') Published
                                              option(value = 'Closed') Closed
                                              option(value = 'NotProblem') NotProblem
+                                             option(value = 'ReOpen') ReOpen
                                        td=questionMonitors[i].dealTime
                                        td
                                           a.btn.btn-success(href='javascript:void(0);' onclick='viewDetail("'+questionMonitors[i].id+'")')
@@ -702,7 +705,7 @@ html
 
             p.col-md-3.col-sm-3.col-xs-12.powered-by
                |  Powered by:
-               a(href='http://usman.it/free-responsive-admin-template')    Charisma
+               a(href='http://usman.it/free-responsive-admin-template') Charisma
       // /.fluid-container
       // external javascript
       script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
